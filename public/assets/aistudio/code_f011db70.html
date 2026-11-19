@@ -1,0 +1,709 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#161d16", "on-primary": "#233600", "secondary": "#c0c9bd", "on-tertiary": "#2b322b", "secondary-fixed-dim": "#c0c9bd", "tertiary-fixed-dim": "#c1c9be", "surface-bright": "#383a37", "on-primary-fixed": "#131f00", "on-secondary-container": "#afb8ac", "tertiary-fixed": "#dde5d9", "primary": "#fcffec", "tertiary": "#f9fff5", "tertiary-container": "#dbe3d7", "background": "#121412", "surface-tint": "#9fd830", "inverse-primary": "#486800", "error": "#ffb4ab", "secondary-fixed": "#dce5d9", "surface-container-lowest": "#0d0f0d", "inverse-surface": "#e2e3df", "surface-container-low": "#1a1c1a", "on-error": "#690005", "on-primary-fixed-variant": "#354e00", "on-surface": "#e2e3df", "outline-variant": "#434936", "primary-fixed-dim": "#9fd830", "surface-variant": "#333533", "on-background": "#e2e3df", "surface-container": "#1e201e", "error-container": "#93000a", "surface-container-high": "#292a28", "inverse-on-surface": "#2f312e", "on-secondary-fixed": "#161d16", "on-primary-container": "#4c6d00", "surface-container-highest": "#333533", "on-tertiary-fixed-variant": "#414940", "on-tertiary-container": "#5e655c", "outline": "#8d937c", "on-error-container": "#ffdad6", "surface-dim": "#121412", "on-secondary": "#2a322a", "on-surface-variant": "#c3c9b0", "primary-container": "#b8f34a", "secondary-container": "#404940", "surface": "#121412", "primary-fixed": "#baf54c", "on-secondary-fixed-variant": "#404940" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "margin-tablet": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-md": "1rem" }, "fontFamily": { "headline-xl": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "label-md": [ "JetBrains Mono" ], "code-inline": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "label-sm": [ "JetBrains Mono" ], "body-sm": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-xl": [ "3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-md": [ "0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "500" } ], "code-inline": [ "0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-md": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "headline-xl-mobile": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "label-sm": [ "0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-lg": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-sm": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest z-40 flex flex-col justify-between border-r border-outline-variant/30 select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/20"><div class="flex items-center gap-space-sm"><div class="h-8 w-8 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center justify-center font-code-inline text-code-inline font-medium text-primary-container shadow-inner">&gt;<span class="text-primary-container font-bold inline-block ml-0.5 animate-pulse">_</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-[1.125rem] tracking-tight text-on-surface font-semibold">BuildLog</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span></div><span class="font-label-sm text-[0.625rem] tracking-wider text-outline uppercase font-semibold">Automated Dev Intel</span></div></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high border border-primary-container/30 text-primary-container font-medium tracking-wide">v3.0</span></div><div class="px-space-md pt-space-md pb-space-sm"><button class="w-full flex items-center justify-between px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors group" type="button"><div class="flex items-center gap-space-sm"><span class="font-code-inline text-[13px] text-outline group-hover:text-primary-container font-semibold">&gt;</span><span class="font-body-sm text-body-sm">Quick Switch repo or command...</span></div><div class="flex items-center gap-0.5"><kbd class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant border border-outline-variant/40">⌘K</kbd></div></button></div><div class="px-space-md py-space-xs"><div class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-2 py-1 font-semibold flex items-center justify-between"><span>Intelligence &amp; Flow</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container animate-pulse"></span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-surface-container text-on-surface border-l-2 border-primary-container font-medium"><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="overview" href="#"><span>Overview</span><span class="font-label-sm text-[11px] text-outline font-medium">01</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="my-projects" href="#"><span>My Projects</span><span class="font-label-sm text-[11px] text-outline font-medium">3</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="activity-timeline" href="#"><span>Activity Timeline</span><span class="font-label-sm text-[11px] text-outline font-medium">Live</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="project-memory" href="#"><span class="flex items-center gap-1.5"><span>Project Memory</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span></span><span class="font-label-sm text-[10px] px-1 py-0.2 rounded bg-surface-container-high text-primary-container border border-primary-container/30 uppercase">Sync</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="integrations" href="#"><span>Integrations</span><span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-surface-container-high text-outline">Connected</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="settings" href="#"><span>Settings</span><span class="font-label-sm text-[11px] text-outline font-medium">⌘,</span></a></nav></div><div class="px-space-md pt-space-sm"><div class="flex items-center justify-between px-2 py-1"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Connected Repositories</span><button class="flex items-center text-outline hover:text-primary-container transition-colors" title="Add repository" type="button"><span class="font-label-sm text-[11px] font-code-inline">+ADD</span></button></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-surface-container text-on-surface font-medium"><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-lifeos" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_8px_#b8f34a]"></span><span class="truncate font-code-inline text-[12px]">alexchen/lifeos</span></span><span class="font-label-sm text-[10px] text-primary-container uppercase font-mono">active</span></a><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-saas-dashboard" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span><span class="truncate font-code-inline text-[12px]">alexchen/saas-dashboard</span></span><span class="font-label-sm text-[10px] text-outline font-mono">synced</span></a><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-supabase-starter" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span><span class="truncate font-code-inline text-[12px]">alexchen/supabase-starter</span></span><span class="font-label-sm text-[10px] text-outline font-mono">synced</span></a></nav></div></div><div class="p-space-sm border-t border-outline-variant/30"><div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low border border-outline-variant/20"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center shrink-0 font-code-inline text-label-md text-primary-container font-semibold">AC</div><div class="flex flex-col min-w-0"><span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Alex Chen</span><span class="font-label-sm text-[11px] text-outline font-code-inline truncate">alexchen-gh</span></div></div><div class="flex items-center gap-1.5 shrink-0"><div class="flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-primary-container font-label-sm text-label-sm font-medium"><span class="font-code-inline text-[11px]">⚡</span><span>14d</span></div><button class="text-outline hover:text-on-surface transition-colors p-1" title="Sign out" type="button"><span class="font-code-inline text-[13px]">↪</span></button></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 z-30"><div class="h-16 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-space-xs font-code-inline text-label-md shrink-0"><span class="text-primary-container font-semibold tracking-wide">BuildLog</span><span class="text-outline">v3.0</span><span class="px-1.5 py-0.5 rounded bg-surface-container-high border border-primary-container/20 text-primary-container text-[10px] font-bold tracking-widest uppercase">Automated</span></div><div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-[11px] text-on-surface-variant font-code-inline">GitHub App Connected • Auto-syncing every 5m</span></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-body-sm text-body-sm hover:border-outline-variant hover:bg-surface-container transition-all" type="button"><span class="font-code-inline text-primary-container font-bold text-[12px]">+</span><span class="font-code-inline text-[12px]">Connect Repository</span></button><button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-body-sm text-body-sm font-semibold hover:shadow-[0_0_16px_rgba(184,243,74,0.35)] transition-all" type="button"><span class="font-code-inline text-[13px] font-bold">⚡</span><span>Resume Context</span><kbd class="hidden sm:inline-block font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-black/20 text-on-primary-container font-mono ml-1">⌧R</kbd></button><div class="h-5 w-[1px] bg-outline-variant/30 mx-1"></div><button class="relative p-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-lg hover:bg-surface-container-low" title="Notifications" type="button"><span class="font-code-inline text-[14px]">◈</span><span class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span></button><div class="flex items-center gap-2 pl-1"><div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/50 flex items-center justify-center font-code-inline text-[11px] font-semibold text-primary-container" title="Alex Chen (Solo Founder)">AC</div></div></div></div></header><main class="w-full pt-16 bg-surface-container-lowest flex-1"><div class="flex flex-col w-full">
+<!-- Interactive Toast Notification Container -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+<!-- Repositories / Project Memory Sub-Header Area -->
+<section class="w-full bg-surface-container-low px-space-md lg:px-space-xl py-space-lg flex flex-col gap-space-md"><!-- Breadcrumb & Clean Auto-Sync Info -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+  <div class="flex items-center gap-2 font-code-inline text-label-sm text-outline">
+    <span class="hover:text-on-surface cursor-pointer transition-colors">Repositories</span>
+    <span class="text-surface-bright">/</span>
+    <span class="text-on-surface font-medium">alexchen/lifeos</span>
+    <span class="text-surface-bright">/</span>
+    <span class="text-secondary font-medium tracking-wide">Project Memory Engine</span>
+  </div>
+  <div class="flex items-center gap-3 font-code-inline text-label-sm text-outline">
+    <div class="flex items-center gap-2">
+      <span class="h-2 w-2 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span>
+      <span class="text-on-surface font-medium">Auto-Synthesized</span>
+    </div>
+    <span class="text-surface-bright">•</span>
+    <span>Last webhook 42s ago</span>
+    <span class="text-surface-bright">•</span>
+    <span class="text-secondary font-mono">v0.8.5</span>
+  </div>
+</div>
+
+<!-- Title & Action Command Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-1">
+  <div class="flex flex-col gap-1 min-w-0 max-w-3xl">
+    <div class="flex items-center gap-3">
+      <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Project Memory: alexchen/lifeos</h1>
+      <span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-code-inline text-label-sm tracking-wide">v3.0</span>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      Continuous repository consciousness autonomously derived from Git commit differentials, AST call-graph telemetry, pull request semantics, and runtime CI logs.
+    </p>
+  </div>
+  <!-- Quick Command Buttons -->
+  <div class="flex flex-wrap items-center gap-space-sm shrink-0">
+    <button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-label-md transition-colors border border-outline-variant/30" id="btn-copy-context" onclick="copyContextPayload()" type="button">
+      <span class="material-symbols-outlined text-[18px] text-outline">content_copy</span>
+      <span>Copy Context</span>
+      <kbd class="px-1.5 py-0.5 rounded bg-surface-container-highest text-outline font-label-sm">⌘C</kbd>
+    </button>
+    <button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-label-md transition-colors border border-outline-variant/30" onclick="triggerSyncModal()" type="button">
+      <span class="material-symbols-outlined text-[18px]">tune</span>
+      <span>Settings</span>
+    </button>
+    <button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-on-primary-container font-code-inline text-label-md font-semibold hover:shadow-[0_0_16px_rgba(184,243,74,0.35)] transition-all active:scale-95" id="btn-resume-context" onclick="resumeContextInjection()" type="button">
+      <span class="material-symbols-outlined text-[18px]">bolt</span>
+      <span>Resume Project Context</span>
+      <kbd class="px-1.5 py-0.5 rounded bg-black/20 text-on-primary-container font-code-inline text-label-sm">⌥R</kbd>
+    </button>
+  </div>
+</div>
+
+<!-- Streamlined Telemetry Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md pt-2">
+  <div class="bg-surface-container/60 border border-outline-variant/20 p-4 rounded-xl flex flex-col justify-between">
+    <span class="font-code-inline text-label-sm text-outline uppercase tracking-wider">Memory Freshness</span>
+    <div class="flex items-baseline gap-2 mt-2">
+      <span class="font-headline-md text-headline-md text-primary font-bold">99.4%</span>
+      <span class="font-code-inline text-label-sm text-secondary font-medium">synced</span>
+    </div>
+    <div class="w-full bg-surface-container-highest h-1 rounded-full mt-3 overflow-hidden">
+      <div class="bg-primary-container h-full rounded-full" style="width: 99.4%"></div>
+    </div>
+  </div>
+  <div class="bg-surface-container/60 border border-outline-variant/20 p-4 rounded-xl flex flex-col justify-between">
+    <span class="font-code-inline text-label-sm text-outline uppercase tracking-wider">Tracked Commits</span>
+    <div class="flex items-baseline gap-2 mt-2">
+      <span class="font-headline-md text-headline-md text-primary font-bold">184</span>
+      <span class="font-code-inline text-label-sm text-outline">verified</span>
+    </div>
+    <span class="font-code-inline text-label-sm text-outline mt-3">4 merged in sprint #12</span>
+  </div>
+  <div class="bg-surface-container/60 border border-outline-variant/20 p-4 rounded-xl flex flex-col justify-between">
+    <span class="font-code-inline text-label-sm text-outline uppercase tracking-wider">Vector Anchors</span>
+    <div class="flex items-baseline gap-2 mt-2">
+      <span class="font-headline-md text-headline-md text-primary font-bold">42</span>
+      <span class="font-code-inline text-label-sm text-secondary">nodes</span>
+    </div>
+    <span class="font-code-inline text-label-sm text-outline mt-3">p95 read: 38.2ms (&lt;40ms SLA)</span>
+  </div>
+  <div class="bg-surface-container/60 border border-outline-variant/20 p-4 rounded-xl flex flex-col justify-between">
+    <span class="font-code-inline text-label-sm text-outline uppercase tracking-wider">Token Density</span>
+    <div class="flex items-baseline gap-2 mt-2">
+      <span class="font-headline-md text-headline-md text-primary font-bold">2,410</span>
+      <span class="font-code-inline text-label-sm text-outline">tokens/frame</span>
+    </div>
+    <span class="font-code-inline text-label-sm text-secondary mt-3">94.2% cost optimized</span>
+  </div>
+</div></section>
+<!-- Core Bento Grid Section Canvas -->
+<div class="w-full px-space-md lg:px-space-xl py-space-xl flex flex-col gap-space-xl">
+<!-- Bento Row 1: Objective & Known Active Topology + AST Heatmap -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg"><!-- Primary Card: Core Project Objective & Sprint Topology (Col 7) -->
+<section class="lg:col-span-7 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span>
+        <span class="font-code-inline text-label-sm uppercase tracking-wider text-outline font-medium">Active Sprint #12</span>
+      </div>
+      <span class="font-code-inline text-label-sm text-secondary font-medium">82% complete</span>
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <h2 class="font-headline-md text-headline-md text-primary font-semibold">Self-Hosted pgvector HNSW Index Migration</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        Migrate vector indexing from OpenAI remote embeddings to self-hosted pgvector HNSW index, targeting p95 query latency under 40ms for real-time Cursor context injection.
+      </p>
+    </div>
+    <!-- Progress Bar with milestone ticks -->
+    <div class="flex flex-col gap-2 pt-1">
+      <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+        <div class="bg-primary-container h-full rounded-full" style="width: 82%"></div>
+      </div>
+      <div class="flex justify-between font-code-inline text-label-sm text-outline">
+        <span>PR #42 Merged</span>
+        <span class="text-secondary">Goal: p95 &lt; 40ms (Current: 38.2ms)</span>
+        <span>Load Test</span>
+      </div>
+    </div>
+    <!-- Synthesized Architecture Matrix -->
+    <div class="mt-space-xs bg-surface-container/50 border border-outline-variant/20 rounded-lg p-space-md">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+        <div class="flex flex-col gap-0.5">
+          <span class="font-code-inline text-label-sm text-outline">Frontend</span>
+          <span class="font-code-inline text-body-sm text-on-surface font-semibold">Next.js 15</span>
+          <span class="font-code-inline text-label-sm text-secondary">RSC Architecture</span>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-code-inline text-label-sm text-outline">Vector Store</span>
+          <span class="font-code-inline text-body-sm text-on-surface font-semibold">Postgres 16</span>
+          <span class="font-code-inline text-label-sm text-secondary">pgvector / HNSW</span>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-code-inline text-label-sm text-outline">Runtime</span>
+          <span class="font-code-inline text-body-sm text-on-surface font-semibold">Bun 1.1</span>
+          <span class="font-code-inline text-label-sm text-secondary">Fast I/O daemon</span>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <span class="font-code-inline text-label-sm text-outline">Inference Flow</span>
+          <span class="font-code-inline text-body-sm text-on-surface font-semibold">Claude 3.5</span>
+          <span class="font-code-inline text-label-sm text-secondary">Cursor rules</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-inline text-label-sm border-t border-outline-variant/20">
+    <span>AST tree rebuilt from SHA <code class="text-on-surface font-mono">7f9a2e1</code></span>
+    <span>100% Synced</span>
+  </div>
+</section>
+
+<!-- Secondary Card: AST Heatmap & Recently Modified Subsystems (Col 5) -->
+<section class="lg:col-span-5 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px] text-secondary">account_tree</span>
+        <h3 class="font-code-inline text-label-sm uppercase tracking-wider text-outline font-semibold">Subsystem AST Heatmap</h3>
+      </div>
+      <span class="font-code-inline text-label-sm text-outline">4 Active Files</span>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">
+      High-volatility modules automatically identified by Git diff frequency and structural import dependency clustering.
+    </p>
+    <!-- Module Activity Ledger -->
+    <div class="flex flex-col gap-2 font-code-inline text-body-sm">
+      <div class="p-2.5 rounded-lg bg-surface-container/60 hover:bg-surface-container border border-outline-variant/20 transition-colors flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary-container shrink-0"></span>
+          <span class="text-on-surface font-medium truncate text-label-md">packages/vector/src/hnsw.ts</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 text-label-sm">
+          <span class="text-secondary">+84 -12</span>
+          <span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary">Staged</span>
+        </div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-surface-container/60 hover:bg-surface-container border border-outline-variant/20 transition-colors flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0"></span>
+          <span class="text-on-surface-variant truncate text-label-md">supabase/migrations/..._pgvector.sql</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 text-label-sm">
+          <span class="text-outline">PR #42</span>
+          <span class="px-2 py-0.5 rounded bg-surface-container-highest text-outline">Merged</span>
+        </div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-surface-container/60 hover:bg-surface-container border border-outline-variant/20 transition-colors flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-error shrink-0"></span>
+          <span class="text-on-surface font-medium truncate text-label-md">packages/worker/src/pool.ts</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 text-label-sm">
+          <span class="text-error font-medium">CI #842</span>
+          <span class="px-2 py-0.5 rounded bg-error-container/30 text-error font-semibold">Blocker</span>
+        </div>
+      </div>
+      <div class="p-2.5 rounded-lg bg-surface-container/60 hover:bg-surface-container border border-outline-variant/20 transition-colors flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0"></span>
+          <span class="text-on-surface-variant truncate text-label-md">apps/web/components/context-dock.tsx</span>
+        </div>
+        <div class="flex items-center gap-2 shrink-0 text-label-sm">
+          <span class="text-outline">2d ago</span>
+          <span class="px-2 py-0.5 rounded bg-surface-container-highest text-outline">Clean</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-inline text-label-sm border-t border-outline-variant/20">
+    <span>0 Invalidation Pending</span>
+    <button class="text-secondary hover:text-on-surface text-label-sm transition-colors" onclick="showNotification('Graph visualizer re-indexed with latest AST nodes')" type="button">Inspect Graph ↗</button>
+  </div>
+</section></div>
+<!-- Bento Row 2: Completed Changes (Backed by Verifiable GitHub Evidence) -->
+<section class="w-full bg-surface-container-low rounded-xl p-space-lg flex flex-col gap-space-lg"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+  <div class="flex items-center gap-3">
+    <div class="h-8 w-8 rounded-lg bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-secondary">
+      <span class="material-symbols-outlined text-[18px]">verified</span>
+    </div>
+    <div>
+      <h2 class="font-headline-md text-headline-md text-primary font-semibold">Completed Changes Backed by Git Evidence</h2>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">Synthesis assertions verified against immutable commit hashes and CI benchmarks.</p>
+    </div>
+  </div>
+  <span class="text-outline font-code-inline text-label-sm">3 Verified Milestones</span>
+</div>
+
+<!-- Evidence Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+  <!-- Milestone 1 -->
+  <div class="bg-surface-container/60 border border-outline-variant/20 rounded-xl p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors group">
+    <div class="flex flex-col gap-space-sm">
+      <div class="flex items-center justify-between text-label-sm font-code-inline">
+        <span class="text-secondary font-semibold">MILESTONE 01</span>
+        <span class="text-outline">2h ago</span>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+        HNSW Cosine Vector Indexing
+      </h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">
+        Replaced flat exact Euclidean distance lookups with an HNSW cosine index configured for fast similarity retrieval.
+      </p>
+      <!-- Telemetry metric -->
+      <div class="bg-surface-container-lowest/80 border border-outline-variant/20 p-2.5 rounded-lg flex items-center justify-between font-code-inline text-label-sm">
+        <span class="text-outline">Latency Target:</span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-outline line-through text-[12px]">420ms</span>
+          <span class="text-on-surface font-semibold">38.2ms</span>
+          <span class="text-secondary font-mono text-[11px]">(-90%)</span>
+        </div>
+      </div>
+      <!-- Anchors -->
+      <div class="flex items-center gap-2 pt-1 font-code-inline text-label-sm text-outline">
+        <span>SHA:</span>
+        <button class="hover:text-on-surface font-mono text-secondary transition-colors" onclick="copyHash('7f9a2e1cb49a02')" type="button">#7f9a2e1</button>
+        <span>•</span>
+        <span class="text-outline">PR #42</span>
+      </div>
+    </div>
+    <div class="mt-space-md pt-space-sm flex items-center justify-between font-code-inline text-label-sm border-t border-outline-variant/20">
+      <button class="text-outline hover:text-on-surface flex items-center gap-1 transition-colors" onclick="copyHash('7f9a2e1cb49a02')" type="button">
+        <span>Copy SHA</span>
+      </button>
+      <button class="text-secondary hover:text-on-surface flex items-center gap-1 transition-colors" onclick="showNotification('Opening Git diff...')" type="button">
+        <span>View Diff ↗</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Milestone 2 -->
+  <div class="bg-surface-container/60 border border-outline-variant/20 rounded-xl p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors group">
+    <div class="flex flex-col gap-space-sm">
+      <div class="flex items-center justify-between text-label-sm font-code-inline">
+        <span class="text-secondary font-semibold">MILESTONE 02</span>
+        <span class="text-outline">4h ago</span>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+        PgBouncer Connection Pooling
+      </h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">
+        Pre-configured transaction pooling for edge scale spikes to prevent PostgreSQL backend exhaustion.
+      </p>
+      <!-- Telemetry metric -->
+      <div class="bg-surface-container-lowest/80 border border-outline-variant/20 p-2.5 rounded-lg flex items-center justify-between font-code-inline text-label-sm">
+        <span class="text-outline">Pool Limit:</span>
+        <span class="text-on-surface font-semibold">60 Max Connections</span>
+      </div>
+      <!-- Anchors -->
+      <div class="flex items-center gap-2 pt-1 font-code-inline text-label-sm text-outline">
+        <span>SHA:</span>
+        <button class="hover:text-on-surface font-mono text-secondary transition-colors" onclick="copyHash('3d21c09ef781a9')" type="button">#3d21c09</button>
+        <span>•</span>
+        <span class="text-outline">PR #43</span>
+      </div>
+    </div>
+    <div class="mt-space-md pt-space-sm flex items-center justify-between font-code-inline text-label-sm border-t border-outline-variant/20">
+      <button class="text-outline hover:text-on-surface flex items-center gap-1 transition-colors" onclick="copyHash('3d21c09ef781a9')" type="button">
+        <span>Copy SHA</span>
+      </button>
+      <button class="text-secondary hover:text-on-surface flex items-center gap-1 transition-colors" onclick="showNotification('Opening Git diff...')" type="button">
+        <span>View Diff ↗</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Milestone 3 -->
+  <div class="bg-surface-container/60 border border-outline-variant/20 rounded-xl p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors group">
+    <div class="flex flex-col gap-space-sm">
+      <div class="flex items-center justify-between text-label-sm font-code-inline">
+        <span class="text-secondary font-semibold">MILESTONE 03</span>
+        <span class="text-outline">1d ago</span>
+      </div>
+      <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-primary-container transition-colors">
+        Row-Level Security on Vectors
+      </h3>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">
+        Strict multi-tenant security policies enforcing user ID checks at PostgreSQL query engine boundary.
+      </p>
+      <!-- Telemetry metric -->
+      <div class="bg-surface-container-lowest/80 border border-outline-variant/20 p-2.5 rounded-lg flex items-center justify-between font-code-inline text-label-sm">
+        <span class="text-outline">Security Audit:</span>
+        <span class="text-on-surface font-semibold">100% Passing (0 Leaks)</span>
+      </div>
+      <!-- Anchors -->
+      <div class="flex items-center gap-2 pt-1 font-code-inline text-label-sm text-outline">
+        <span>SHA:</span>
+        <button class="hover:text-on-surface font-mono text-secondary transition-colors" onclick="copyHash('e891d2aa389140')" type="button">#e891d2a</button>
+        <span>•</span>
+        <span class="text-outline">PR #40</span>
+      </div>
+    </div>
+    <div class="mt-space-md pt-space-sm flex items-center justify-between font-code-inline text-label-sm border-t border-outline-variant/20">
+      <button class="text-outline hover:text-on-surface flex items-center gap-1 transition-colors" onclick="copyHash('e891d2aa389140')" type="button">
+        <span>Copy SHA</span>
+      </button>
+      <button class="text-secondary hover:text-on-surface flex items-center gap-1 transition-colors" onclick="showNotification('Opening Git diff...')" type="button">
+        <span>View Diff ↗</span>
+      </button>
+    </div>
+  </div>
+</div></section>
+<!-- Bento Row 3: Active Blockers & GitHub Pull Requests (Split Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg"><!-- Left: Active Blockers & CI Diagnostics (Col 6) -->
+<section class="lg:col-span-6 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-error animate-pulse"></span>
+        <span class="font-code-inline text-label-sm uppercase tracking-wider text-error font-semibold">Active Blocker Detected</span>
+      </div>
+      <span class="px-2 py-0.5 rounded bg-error-container/30 text-error font-code-inline text-label-sm font-semibold">P0</span>
+    </div>
+    <!-- Critical Incident Card -->
+    <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-space-md flex flex-col gap-3">
+      <div class="flex items-start justify-between gap-2">
+        <div class="flex flex-col gap-0.5">
+          <code class="font-code-inline text-body-sm font-semibold text-error">ERR_PGBOUNCER_MAXCLIENTS_EXCEEDED</code>
+          <span class="font-body-sm text-body-sm text-on-surface">Worker pool crashing under 80+ synthetic test queries</span>
+        </div>
+        <span class="material-symbols-outlined text-error text-[20px] shrink-0">error</span>
+      </div>
+      <!-- Inset Code & Log Trace -->
+      <div class="bg-surface-container-lowest/80 border border-outline-variant/20 p-space-sm rounded font-code-inline text-label-sm text-outline overflow-x-auto">
+        <div class="text-error">&gt; [FATAL ERROR] 2024-10-24T18:41:09.122Z</div>
+        <div>pool.ts:89: server closed connection unexpectedly</div>
+        <div class="text-on-surface-variant">&gt; PgBouncer query queue limit exhausted by worker pool</div>
+      </div>
+      <!-- Evidence Origin -->
+      <div class="flex items-center gap-2 font-code-inline text-label-sm text-outline">
+        <span>Flagged:</span>
+        <span class="text-on-surface font-mono">Issue #91</span>
+        <span>•</span>
+        <span class="text-on-surface font-mono">CI Run #842</span>
+      </div>
+    </div>
+    <!-- Automated Mitigation Path -->
+    <div class="bg-surface-container/40 border border-outline-variant/20 rounded-lg p-3 flex flex-col gap-1.5">
+      <span class="font-code-inline text-label-sm text-secondary uppercase tracking-wider font-medium flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+        <span>Mitigation Path</span>
+      </span>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">
+        Switch PgBouncer pool_mode from <code class="text-on-surface font-code-inline">session</code> to <code class="text-secondary font-code-inline font-medium">transaction</code>, or cap batch queue at 12 concurrent workers. Ready in PR #43.
+      </p>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between border-t border-outline-variant/20">
+    <span class="font-code-inline text-label-sm text-outline">Est. resolution: ~15m</span>
+    <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-label-sm font-medium border border-outline-variant/30 transition-colors" onclick="showNotification('Switched CI build trigger to debug worker profile');" type="button">
+      <span>Apply Patch</span>
+      <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+    </button>
+  </div>
+</section>
+
+<!-- Right: Open Pull Requests & Review Radar (Col 6) -->
+<section class="lg:col-span-6 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px] text-secondary">call_merge</span>
+        <h3 class="font-code-inline text-label-sm uppercase tracking-wider text-outline font-semibold">Active Review Radar (PRs)</h3>
+      </div>
+      <span class="font-code-inline text-label-sm text-outline">2 Open PRs</span>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">
+      Live Git branch states continually synthesized against code health scores and deployment safety gates.
+    </p>
+    <!-- PR Items -->
+    <div class="flex flex-col gap-2.5 font-code-inline">
+      <!-- PR #43 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-space-md flex flex-col gap-2 hover:bg-surface-container transition-colors">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <span class="font-medium text-primary text-body-sm truncate">PR #43: Configure connection pooling timeout</span>
+            <div class="text-label-sm text-outline flex items-center gap-2">
+              <span class="text-secondary font-mono">fix/pgbouncer-pool-timeout</span>
+              <span>→</span>
+              <span class="text-on-surface font-mono">main</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-surface-container-highest text-secondary text-label-sm font-medium shrink-0">3/3 Pass</span>
+        </div>
+        <div class="flex items-center justify-between text-label-sm pt-1 border-t border-outline-variant/20">
+          <span class="text-on-surface-variant">+38 / -6 lines • Solves #91</span>
+          <button class="text-secondary hover:text-on-surface font-medium transition-colors" onclick="showNotification('Triggered quick merge preview for PR #43')" type="button">Merge Pipeline ↗</button>
+        </div>
+      </div>
+      <!-- PR #41 (Draft) -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-space-md flex flex-col gap-2 hover:bg-surface-container transition-colors">
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex flex-col gap-0.5 min-w-0">
+            <span class="font-medium text-on-surface text-body-sm truncate">PR #41: Supabase RLS telemetry test suite</span>
+            <div class="text-label-sm text-outline flex items-center gap-2">
+              <span class="text-outline font-mono">test/rls-telemetry</span>
+              <span>→</span>
+              <span class="text-on-surface font-mono">main</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-surface-container-highest text-outline text-label-sm shrink-0">Draft</span>
+        </div>
+        <div class="flex items-center justify-between text-label-sm pt-1 border-t border-outline-variant/20">
+          <span class="text-on-surface-variant">+192 / -0 lines</span>
+          <span class="text-outline">Awaiting author push</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-inline text-label-sm border-t border-outline-variant/20">
+    <span>Sync latency: 120ms</span>
+    <a class="text-secondary hover:text-on-surface transition-colors" href="#github-repo" onclick="showNotification('Navigating to GitHub pull requests list'); return false;">View on GitHub ↗</a>
+  </div>
+</section></div>
+<!-- Bento Row 4: ADRs & AI-Suggested Next Momentum Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg"><!-- Architectural Decisions Extracted from Git/PRs (Col 6) -->
+<section class="lg:col-span-6 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px] text-secondary">history_edu</span>
+        <h3 class="font-code-inline text-label-sm uppercase tracking-wider text-outline font-semibold">Architectural Decisions (ADRs)</h3>
+      </div>
+      <span class="text-outline font-code-inline text-label-sm">From Commits</span>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">
+      Immutable architectural commitments extracted from merged PR commentary and commit rationale strings.
+    </p>
+    <!-- ADR List -->
+    <div class="flex flex-col gap-2.5 font-code-inline">
+      <!-- ADR 012 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-space-md flex flex-col gap-1.5">
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-primary text-body-sm">ADR-012: Supabase pgvector over Pinecone</span>
+          <span class="text-secondary text-label-sm font-mono">Accepted</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">
+          Eliminates external vector database SaaS network hop, ensuring ACID consistency with journal tables. Reduces cost by $120/mo.
+        </p>
+        <div class="flex items-center justify-between text-label-sm text-outline pt-1">
+          <span>SHA: <code class="text-on-surface font-mono">a19d80f</code></span>
+          <span class="text-secondary">Latency -45ms</span>
+        </div>
+      </div>
+      <!-- ADR 011 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-space-md flex flex-col gap-1.5">
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-primary text-body-sm">ADR-011: Bun Daemon for File Watcher</span>
+          <span class="text-secondary text-label-sm font-mono">Accepted</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface-variant">
+          Standardized on Bun runtime for file-system AST event polling due to 24ms cold-start latency vs 89ms in Node.js.
+        </p>
+        <div class="flex items-center justify-between text-label-sm text-outline pt-1">
+          <span>SHA: <code class="text-on-surface font-mono">f0129bc</code></span>
+          <span class="text-secondary">Cold boot -73%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-inline text-label-sm border-t border-outline-variant/20">
+    <span>12 ADRs Cataloged</span>
+    <button class="text-secondary hover:text-on-surface transition-colors" onclick="showNotification('Exporting ADR repository markdown specs...')" type="button">Export ADRs ↗</button>
+  </div>
+</section>
+
+<!-- AI-Suggested Next Momentum Actions (Col 6) -->
+<section class="lg:col-span-6 bg-surface-container-low/70 border border-outline-variant/20 rounded-xl p-space-lg flex flex-col justify-between">
+  <div class="flex flex-col gap-space-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px] text-secondary">fast_forward</span>
+        <h3 class="font-code-inline text-label-sm uppercase tracking-wider text-outline font-semibold">Next Momentum Actions</h3>
+      </div>
+      <span class="text-outline font-code-inline text-label-sm">AI Synthesized</span>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">
+      High-leverage engineering moves calculated to unlock sprint momentum and unblock active CI failure states.
+    </p>
+    <!-- Action Items -->
+    <div class="flex flex-col gap-2.5 font-code-inline">
+      <!-- Action 1 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors group">
+        <div class="flex items-start gap-2.5 min-w-0">
+          <span class="font-mono text-secondary text-label-md mt-0.5">01</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-medium text-primary text-body-sm group-hover:text-primary-container transition-colors">Merge PR #43 &amp; run mock load test</span>
+            <span class="font-body-sm text-label-sm text-on-surface-variant">Verifies PgBouncer ceiling fix under extreme concurrency.</span>
+          </div>
+        </div>
+        <button class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-sm border border-outline-variant/30 transition-colors" onclick="copyAction('gh pr merge 43 --squash &amp;&amp; bun run test:load:vectors')" title="Copy command" type="button">
+          <span class="material-symbols-outlined text-[14px]">terminal</span>
+          <span>Copy</span>
+        </button>
+      </div>
+      <!-- Action 2 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors group">
+        <div class="flex items-start gap-2.5 min-w-0">
+          <span class="font-mono text-secondary text-label-md mt-0.5">02</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-medium text-primary text-body-sm group-hover:text-primary-container transition-colors">Update .cursorrules with cosine operator &lt;=&gt;</span>
+            <span class="font-body-sm text-label-sm text-on-surface-variant">Prevents Cursor from generating invalid L2 distance queries.</span>
+          </div>
+        </div>
+        <button class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-sm border border-outline-variant/30 transition-colors" onclick="copyAction('echo \'# pgvector cosine distance\nUse &lt;=&gt; instead of &lt;-&gt; for similarity\' &gt;&gt; .cursorrules')" title="Copy quick-fix" type="button">
+          <span class="material-symbols-outlined text-[14px]">terminal</span>
+          <span>Fix</span>
+        </button>
+      </div>
+      <!-- Action 3 -->
+      <div class="bg-surface-container/60 border border-outline-variant/20 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors group">
+        <div class="flex items-start gap-2.5 min-w-0">
+          <span class="font-mono text-secondary text-label-md mt-0.5">03</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-medium text-primary text-body-sm group-hover:text-primary-container transition-colors">Resolve uncommitted changes in hnsw.ts</span>
+            <span class="font-body-sm text-label-sm text-on-surface-variant">Stage the +84 lines for vector buffer flushing logic.</span>
+          </div>
+        </div>
+        <button class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-label-sm border border-outline-variant/30 transition-colors" onclick="copyAction('git add packages/vector/src/hnsw.ts &amp;&amp; git commit -m \'feat(vector): finalize buffer flushing\'')" title="Stage all" type="button">
+          <span class="material-symbols-outlined text-[14px]">commit</span>
+          <span>Stage</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-inline text-label-sm border-t border-outline-variant/20">
+    <span>BuildLog Autonomous Core</span>
+    <span class="text-outline">Zero Latency</span>
+  </div>
+</section></div>
+</div>
+<!-- Interactive Modal / Slide-over Drawer for Context Inspection -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4" id="settings-modal">
+<div class="bg-surface-container-low max-w-xl w-full rounded-xl p-space-lg flex flex-col gap-space-md shadow-2xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">tune</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Project Memory Engine Settings</h3>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors" onclick="triggerSyncModal()" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Configure automated webhook synthesis frequency, AST AST call-graph thresholds, and LLM context serialisation output for repository <code class="text-on-surface">alexchen/lifeos</code>.
+      </p>
+<div class="flex flex-col gap-3 font-code-inline text-label-md">
+<label class="flex items-center justify-between p-3 rounded bg-surface-container">
+<span>Continuous GitHub Webhooks</span>
+<input checked="" class="w-4 h-4 accent-primary-container rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface-container">
+<span>Auto-Inject Memory into Cursor / Claude</span>
+<input checked="" class="w-4 h-4 accent-primary-container rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between p-3 rounded bg-surface-container">
+<span>Track AST Rebuilding on Staged Diff</span>
+<input checked="" class="w-4 h-4 accent-primary-container rounded cursor-pointer" type="checkbox">
+</label>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-4 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-label-md" onclick="triggerSyncModal()" type="button">Close</button>
+<button class="px-4 py-2 rounded bg-primary-container text-on-primary-container font-code-inline text-label-md font-semibold" onclick="saveSettings()" type="button">Save Preferences</button>
+</div>
+</div>
+</div>
+<script>
+    function showNotification(msg) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      
+      const toast = document.createElement('div');
+      toast.className = 'px-4 py-3 rounded-lg bg-surface-container-high text-on-surface font-code-inline text-label-md shadow-xl flex items-center gap-2.5 transform transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto';
+      toast.innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#b8f34a]"></span>
+        <span>${msg}</span>
+      `;
+      
+      container.appendChild(toast);
+      
+      // Animate in
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+      
+      // Auto dismiss after 3.2s
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+          if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+          }
+        }, 300);
+      }, 3200);
+    }
+
+    function copyContextPayload() {
+      const payload = `=== BUILDLOG REPO CONTEXT: alexchen/lifeos ===
+TIMESTAMP: ${new Date().toISOString()}
+OBJECTIVE: Migrate vector indexing to self-hosted pgvector HNSW index (p95 < 40ms)
+CURRENT BENCHMARK: 38.2ms (Achieved milestone 1)
+KNOWN BLOCKER: ERR_PGBOUNCER_MAXCLIENTS_EXCEEDED on worker pool (PR #43 pending review)
+ACTIVE AST FILES:
+- packages/vector/src/hnsw.ts (+84 / -12 lines staged)
+- supabase/migrations/20241024_pgvector.sql (Merged)
+ADRs ACTIVE:
+- ADR-012: Supabase pgvector over Pinecone (ACID compliant)
+- ADR-011: Bun daemon local watcher (24ms boot)`;
+
+      navigator.clipboard.writeText(payload).then(() => {
+        showNotification('LLM Context payload copied to clipboard (2,410 tokens)');
+      }).catch(() => {
+        showNotification('Context serialized & ready for Claude/Cursor');
+      });
+    }
+
+    function resumeContextInjection() {
+      showNotification('⚡ Project context synchronized directly into Cursor daemon via ⌥R');
+    }
+
+    function copyHash(hash) {
+      navigator.clipboard.writeText(hash).then(() => {
+        showNotification(`Git SHA hash copied: ${hash}`);
+      });
+    }
+
+    function copyAction(cmd) {
+      navigator.clipboard.writeText(cmd).then(() => {
+        showNotification(`Command copied to clipboard: ${cmd}`);
+      });
+    }
+
+    function triggerSyncModal() {
+      const modal = document.getElementById('settings-modal');
+      if (!modal) return;
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function saveSettings() {
+      triggerSyncModal();
+      showNotification('Project Memory Engine preferences updated');
+    }
+
+    // Keyboard shortcuts for power devs (⌘C, ⌥R)
+    document.addEventListener('keydown', function(e) {
+      // ⌥R (Option + R) for Resume Context
+      if (e.altKey && (e.key === 'r' || e.key === '®')) {
+        e.preventDefault();
+        resumeContextInjection();
+      }
+      // ⌘K quick fallback check
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        showNotification('BuildLog Quick-Switcher engaged');
+      }
+    });
+  </script>
+</div></main></div>
+
+</body></html>

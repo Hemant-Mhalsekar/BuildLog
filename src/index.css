@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg-base: #080908;
+  --color-bg-rail: #0D0F0D;
+  --color-bg-card: #121512;
+  --color-bg-elevated: #181B18;
+  --color-border-subtle: #252D24;
+  --color-accent-lime: #B8F34A;
+  --color-accent-lime-hover: #C8F76C;
+  --color-text-primary: #FCFFEC;
+  --color-text-secondary: #929B90;
+}
+
+@layer base {
+  html {
+    background-color: #080908;
+    color: #F3F5EF;
+    font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  button, a, input, select, textarea {
+    outline-color: #B8F34A;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(184, 243, 74, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Subtle dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080908;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252D24;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #354133;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

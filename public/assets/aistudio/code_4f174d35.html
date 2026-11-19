@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;background-color:#0d0f0d;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+
+/* Rich Subtle Keyframe Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.03); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(14px) scale(0.97); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.32; transform: scale(1.08); }
+}
+
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes light-sweep {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(200%); }
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+.anim-float {
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+.anim-float-rev {
+  animation: float-reverse 18s ease-in-out infinite;
+}
+
+.anim-pulse-subtle {
+  animation: pulse-subtle 8s ease-in-out infinite;
+}
+
+.anim-blink {
+  animation: cursor-blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.light-sweep-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-sweep-border::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 243, 74, 0.8), transparent);
+  animation: light-sweep 6s infinite ease-in-out;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float, .anim-float-rev, .anim-pulse-subtle, .light-sweep-border::after {
+    animation: none !important;
+  }
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#e2e3df",
+          "surface-container": "#181a18",
+          "secondary": "#a0a89d",
+          "error-container": "#93000a",
+          "inverse-surface": "#e2e3df",
+          "on-tertiary-container": "#5e655c",
+          "inverse-on-surface": "#2f312e",
+          "background": "#0c0e0c",
+          "primary-fixed": "#baf54c",
+          "surface-variant": "#2a2d2a",
+          "surface-container-high": "#232623",
+          "primary-fixed-dim": "#9fd830",
+          "outline": "#8d937c",
+          "secondary-container": "#313831",
+          "on-primary-fixed-variant": "#354e00",
+          "on-secondary": "#2a322a",
+          "tertiary-fixed": "#dde5d9",
+          "error": "#ffb4ab",
+          "on-error-container": "#ffdad6",
+          "outline-variant": "#434936",
+          "surface-bright": "#383a37",
+          "on-primary": "#233600",
+          "surface-container-lowest": "#080908",
+          "tertiary-fixed-dim": "#c1c9be",
+          "on-tertiary": "#2b322b",
+          "tertiary": "#f9fff5",
+          "surface-tint": "#9fd830",
+          "on-error": "#690005",
+          "surface-container-low": "#131613",
+          "on-secondary-fixed-variant": "#404940",
+          "secondary-fixed": "#dce5d9",
+          "on-tertiary-fixed-variant": "#414940",
+          "primary-container": "#b8f34a",
+          "on-background": "#e2e3df",
+          "on-surface-variant": "#a6ad97",
+          "surface-dim": "#0c0e0c",
+          "on-tertiary-fixed": "#161d16",
+          "tertiary-container": "#dbe3d7",
+          "surface": "#0f120f",
+          "on-primary-fixed": "#131f00",
+          "secondary-fixed-dim": "#c0c9bd",
+          "on-primary-container": "#203400",
+          "on-secondary-fixed": "#161d16",
+          "inverse-primary": "#486800",
+          "on-secondary-container": "#afb8ac",
+          "primary": "#fcffec",
+          "surface-container-highest": "#2e322e"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.375rem",
+          "lg": "0.75rem",
+          "xl": "1rem",
+          "2xl": "1.5rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "3rem",
+          "space-md": "1.25rem",
+          "space-lg": "2rem",
+          "gutter-desktop": "2rem",
+          "space-sm": "0.75rem",
+          "margin-desktop": "3rem",
+          "space-xs": "0.375rem",
+          "gutter": "1rem",
+          "margin-tablet": "2rem",
+          "margin": "1rem"
+        },
+        "fontFamily": {
+          "code-inline": [
+            "JetBrains Mono", "monospace"
+          ],
+          "label-md": [
+            "JetBrains Mono", "monospace"
+          ],
+          "label-sm": [
+            "JetBrains Mono", "monospace"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "body-lg": [
+            "Inter", "sans-serif"
+          ],
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "headline-lg-mobile": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "body-sm": [
+            "Inter", "sans-serif"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans", "sans-serif"
+          ],
+          "body-md": [
+            "Inter", "sans-serif"
+          ]
+        },
+        "fontSize": {
+          "code-inline": [
+            "0.875rem",
+            {
+              "lineHeight": "1.5rem",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "0.8125rem",
+            {
+              "lineHeight": "1.25rem",
+              "letterSpacing": "0.04em",
+              "fontWeight": "500"
+            }
+          ],
+          "label-sm": [
+            "0.6875rem",
+            {
+              "lineHeight": "1.1rem",
+              "letterSpacing": "0.06em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "1.625rem",
+            {
+              "lineHeight": "2.25rem",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "2.5rem",
+            {
+              "lineHeight": "3.125rem",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl": [
+            "3.75rem",
+            {
+              "lineHeight": "4.35rem",
+              "letterSpacing": "-0.035em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "1.1875rem",
+            {
+              "lineHeight": "1.875rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl-mobile": [
+            "2.35rem",
+            {
+              "lineHeight": "2.9rem",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-lg-mobile": [
+            "1.85rem",
+            {
+              "lineHeight": "2.35rem",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "0.845rem",
+            {
+              "lineHeight": "1.35rem",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "1.25rem",
+            {
+              "lineHeight": "1.75rem",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "0.975rem",
+            {
+              "lineHeight": "1.65rem",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container relative selection:font-medium"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0d0f0d]/85 backdrop-blur-2xl border-b border-white/[0.06] transition-all duration-300 light-sweep-border"><div class="h-20 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-xl"><a class="flex items-center gap-2.5 group" data-path="overview" href="#"><div class="w-8 h-8 rounded-lg bg-primary-container/90 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:shadow-[0_0_16px_rgba(184,243,74,0.35)]"><span class="material-symbols-outlined text-on-primary-container text-[18px]">terminal</span></div><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">Build<span class="text-primary-fixed-dim">Log</span></span><span class="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-on-surface-variant font-label-sm text-label-sm">v3.0</span></a><nav class="hidden md:flex items-center gap-7"><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="product" href="#">Product</a><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="architecture" href="#">Architecture</a><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="engine" href="#">Engine</a><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="integrations" href="#">Integrations</a><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="pricing" href="#">Pricing</a><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="docs" href="#">Docs</a></nav></div><div class="flex items-center gap-5"><a class="font-body-sm text-secondary hover:text-primary transition-colors duration-200" data-path="sign-in" href="#">Sign In</a><a class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-body-sm font-semibold hover:bg-primary-fixed transition-all duration-300 hover:shadow-[0_0_20px_rgba(184,243,74,0.35)] hover:-translate-y-0.5 active:translate-y-0" data-path="connect-github" href="#">Connect GitHub</a><div class="w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] hover:border-white/20 transition-colors flex items-center justify-center cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- Background Ambiance -->
+<div class="relative w-full overflow-hidden">
+<!-- Flowing Ambient Auras -->
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-primary-container/[0.07] blur-[150px] rounded-full pointer-events-none anim-pulse-subtle"></div>
+<div class="absolute top-[28rem] -left-48 w-[500px] h-[500px] bg-primary-fixed-dim/[0.04] blur-[140px] rounded-full pointer-events-none anim-float"></div>
+<div class="absolute top-[48rem] -right-48 w-[550px] h-[550px] bg-primary-container/[0.05] blur-[160px] rounded-full pointer-events-none anim-float-rev"></div>
+<!-- 1. HERO SECTION -->
+<section class="relative z-10 max-w-7xl mx-auto px-margin-desktop pt-24 pb-28 md:pt-32 md:pb-36">
+<div class="flex flex-col items-center text-center">
+<!-- Eyebrow Badge with subtle border & live dot -->
+<div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] backdrop-blur-md mb-8 hover:border-primary-fixed-dim/40 transition-colors duration-300">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed-dim"></span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-medium">BuildLog v3.0 Engine</span>
+<span class="text-white/20 text-xs">•</span>
+<span class="font-label-sm text-label-sm text-secondary">Zero-Config GitHub Webhooks</span>
+</div>
+<!-- Groq-Inspired Clean Editorial Headline -->
+<h1 class="font-headline-xl text-headline-xl tracking-tight text-primary max-w-5xl leading-[1.12]">
+          Every commit tracked. <br class="hidden sm:inline"/>
+<span class="text-on-surface">Every architecture decision remembered.</span> <br/>
+<span class="text-primary-fixed-dim bg-clip-text text-transparent bg-gradient-to-r from-primary-fixed-dim via-primary to-primary-container">Every context switch eliminated.</span>
+</h1>
+<!-- Subheading with generous breathing space -->
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mt-8 leading-relaxed font-light">
+          BuildLog parses AST diffs and continuously synthesizes persistent engineering memory. When you open Cursor, Claude Code, or your terminal, your agents know precisely what you built, what broke, and what to architect next.
+        </p>
+<!-- High-Conversion CTAs -->
+<div class="flex flex-wrap items-center justify-center gap-4 mt-12">
+<a class="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-body-md font-semibold shadow-lg shadow-primary-container/15 hover:bg-primary-fixed hover:shadow-[0_0_30px_rgba(184,243,74,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300" data-path="connect-github" href="#">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span>Connect GitHub Free</span>
+<span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+</a>
+<button class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl border border-white/[0.08] bg-white/[0.03] text-on-surface hover:bg-white/[0.07] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 font-body-md text-body-md font-medium" id="open-interactive-tour">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed-dim">terminal</span>
+<span>Live Interactive Demo</span>
+</button>
+<a class="inline-flex items-center gap-1.5 px-4 py-3 rounded-lg text-secondary hover:text-primary font-body-sm text-body-sm transition-colors duration-200" data-path="architecture" href="#">
+<span>Whitepaper</span>
+<span class="material-symbols-outlined text-[15px]">north_east</span>
+</a>
+</div>
+<!-- Minimalist Refined Technical Metrics (Clean negative space, subtle borders) -->
+<div class="w-full max-w-5xl mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-white/[0.06] py-8">
+<div class="flex flex-col items-center justify-center p-2 group">
+<span class="font-label-md text-2xl md:text-3xl font-bold text-primary font-code-inline group-hover:text-primary-fixed-dim transition-colors">&lt; 4.2s</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-2">AST-Indexed Pipeline</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 group">
+<span class="font-label-md text-2xl md:text-3xl font-bold text-primary-fixed-dim font-code-inline">0.0%</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-2">Context Drift</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 group">
+<span class="font-label-md text-2xl md:text-3xl font-bold text-primary font-code-inline group-hover:text-primary-fixed-dim transition-colors">&lt; 1,940</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-2">Tokens Injected</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 group">
+<span class="font-label-md text-2xl md:text-3xl font-bold text-primary-fixed-dim font-code-inline">100%</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mt-2">Zero-Training Privacy</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. LIVE INTERACTIVE TERMINAL / CONTEXT HANDOFF VISUAL -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-12 md:py-20">
+<div class="relative rounded-2xl border border-white/[0.08] bg-[#0e110e]/90 shadow-2xl backdrop-blur-xl overflow-hidden hover:border-white/15 transition-all duration-500 light-sweep-border">
+<!-- Top Terminal Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 px-6 py-4 border-b border-white/[0.06] bg-white/[0.01]">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-rose-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-amber-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-emerald-500/70"></span>
+</div>
+<div class="h-3 w-px bg-white/10 ml-1"></div>
+<span class="font-code-inline text-label-sm text-secondary/70 tracking-tight">stream://engine.buildlog.dev/v3/realtime-ast-feed</span>
+</div>
+<!-- Language Selector Tabs with smooth transitions -->
+<div class="flex items-center gap-1.5 p-1 rounded-lg border border-white/[0.06] bg-black/40" id="demo-language-selector">
+<button class="lang-tab px-3 py-1 rounded-md font-label-sm text-label-sm bg-primary-container text-on-primary-container font-semibold transition-all duration-200 shadow-sm" data-lang="typescript">TypeScript</button>
+<button class="lang-tab px-3 py-1 rounded-md font-label-sm text-label-sm text-secondary hover:text-on-surface hover:bg-white/[0.04] transition-all duration-200" data-lang="rust">Rust</button>
+<button class="lang-tab px-3 py-1 rounded-md font-label-sm text-label-sm text-secondary hover:text-on-surface hover:bg-white/[0.04] transition-all duration-200" data-lang="python">Python</button>
+<button class="lang-tab px-3 py-1 rounded-md font-label-sm text-label-sm text-secondary hover:text-on-surface hover:bg-white/[0.04] transition-all duration-200" data-lang="go">Go</button>
+</div>
+</div>
+<!-- Dual Pane Architecture Ingestion vs. IDE Handoff -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 font-code-inline text-code-inline divide-y lg:divide-y-0 lg:divide-x divide-white/[0.06]">
+<!-- Left Pane: Git Hook Ingest & Real-Time AST Synthesis -->
+<div class="lg:col-span-6 p-6 md:p-8 flex flex-col justify-between bg-black/20">
+<div>
+<div class="flex items-center justify-between text-secondary mb-6 pb-2 border-b border-white/[0.04]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">alt_route</span>
+<span class="font-label-sm text-label-sm uppercase font-semibold text-primary">Webhook Pipeline: git.push</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary/80 font-code-inline bg-white/[0.04] px-2.5 py-0.5 rounded border border-white/[0.05]">SHA: c98d3e2</span>
+</div>
+<!-- Live Stream Terminal Display -->
+<div class="space-y-3.5 text-secondary leading-relaxed" id="live-stream-content">
+<div class="text-on-surface-variant flex items-center gap-2.5">
+<span class="text-primary-fixed-dim">▶</span> [PARSER] AST diff tree computed: +142 -28 lines in <span class="text-primary font-medium">apps/api/auth.ts</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2.5">
+<span class="text-primary-fixed-dim">▶</span> [ANALYZER] Ignoring 84 linter re-formats. 2 architectural deltas detected.
+</div>
+<div class="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] my-3">
+<div class="text-label-sm font-semibold text-primary-fixed-dim flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">psychology</span>
+                    Synthesized Architecture Decision (ADR #042):
+                  </div>
+<div class="text-body-sm text-on-surface mt-1.5 font-sans leading-relaxed">
+                    "Swapped Redis Token Store for Ed25519 Stateless PASETO v4 to terminate multi-tenant session connection exhaustion under high concurrency."
+                  </div>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2.5">
+<span class="text-rose-400">▲</span> [BLOCKER RADAR] Unmigrated consumer in <span class="text-primary">worker/billing.ts</span>: expects Redis socket.
+</div>
+<div class="text-primary-fixed-dim font-medium pt-1 flex items-center gap-2">
+<span>✓ Vector memory index refreshed in 314ms. Ready for copilot handoff.</span>
+<span class="inline-block w-2 h-4 bg-primary-fixed-dim anim-blink"></span>
+</div>
+</div>
+</div>
+<!-- Terminal Gutter Status -->
+<div class="flex items-center justify-between pt-6 mt-6 border-t border-white/[0.04] text-label-sm text-secondary/70">
+<span>STATUS: LISTENING (POST-RECEIVE HOOK)</span>
+<span class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed-dim"></span>
+</span>
+<span>SOCKET ACTIVE (TLS 1.3)</span>
+</span>
+</div>
+</div>
+<!-- Right Pane: Instant IDE Context Injection Payload -->
+<div class="lg:col-span-6 p-6 md:p-8 flex flex-col justify-between bg-black/40">
+<div>
+<div class="flex items-center justify-between text-secondary mb-6 pb-2 border-b border-white/[0.04]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">smart_toy</span>
+<span class="font-label-sm text-label-sm uppercase font-semibold text-primary">Cursor / Claude Handoff: context.json</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container bg-primary-container/10 px-2.5 py-0.5 rounded border border-primary-container/20">Tokens: 1,412 / 8,192</span>
+</div>
+<!-- Context JSON Display -->
+<pre class="rounded-xl border border-white/[0.05] bg-black/50 p-5 overflow-x-auto text-[13px] leading-relaxed text-secondary" id="json-context-content"><span class="text-primary-fixed-dim">{</span>
+  <span class="text-on-surface">"project"</span>: <span class="text-primary">"lifeos-production"</span>,
+  <span class="text-on-surface">"active_branch"</span>: <span class="text-primary">"feat/paseto-token-migration"</span>,
+  <span class="text-on-surface">"architectural_context"</span>: {
+    <span class="text-on-surface">"decision"</span>: <span class="text-tertiary-container">"ADR-042: Stateless PASETO token integration"</span>,
+    <span class="text-on-surface">"rationale"</span>: <span class="text-tertiary-container">"Prevent connection starvations during JWT refresh"</span>,
+    <span class="text-on-surface">"breaking_change"</span>: <span class="text-primary-fixed-dim">true</span>
+  },
+  <span class="text-on-surface">"agent_instructions"</span>: [
+    <span class="text-on-surface-variant">"Do not re-introduce Redis auth cache."</span>,
+    <span class="text-on-surface-variant">"Fix billing worker auth headers before running tests."</span>
+  ],
+  <span class="text-on-surface">"uncommitted_ast_diffs"</span>: <span class="text-primary-fixed-dim">0</span>
+<span class="text-primary-fixed-dim">}</span></pre>
+</div>
+<!-- IDE Quick Launch Controls -->
+<div class="pt-6 mt-6 border-t border-white/[0.04] flex items-center justify-between">
+<span class="text-label-sm text-secondary/70">PROMPT INJECTION PREVIEW</span>
+<a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-sm font-semibold hover:bg-primary-fixed hover:shadow-[0_0_15px_rgba(184,243,74,0.3)] transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+<span>Trigger buildlog://handshake</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. THE ENGINEERING PROBLEM (Editorial Mistral/Groq Stance with Generous Rhythm) -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-24 md:py-36">
+<div class="max-w-4xl mx-auto text-center md:text-left">
+<div class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed-dim mb-4">The Flow State Dilemma</div>
+<h2 class="font-headline-lg text-3xl md:text-5xl text-primary tracking-tight font-bold">
+          Context switching is killing developer velocity.
+        </h2>
+<div class="relative mt-8 pl-0 md:pl-8 md:border-l-2 md:border-primary-fixed-dim/40">
+<p class="font-headline-md text-xl md:text-2xl text-on-surface leading-relaxed font-normal text-balance">
+          “No software engineer should spend Monday morning parsing through 40 git commits, stale Slack threads, and unwritten pull request discussions just to reconstruct why the auth worker broke on Friday evening.”
+        </p>
+</div>
+<p class="font-body-lg text-body-lg text-secondary mt-8 leading-relaxed font-light">
+          Every time you pivot between features, your brain pays a 23-minute mental rebuild tax. Your AI copilot is even worse off: it gets a cold start, hallucinations, and stale code patterns. BuildLog provides an always-on, immutable ledger of architectural intentionality.
+        </p>
+</div>
+</section>
+<!-- 4. THREE PILLARS OF AUTOMATED MEMORY -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-12 md:py-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Pillar 1 -->
+<div class="group rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-primary-container/30 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(184,243,74,0.1)] transition-all duration-300">
+<div>
+<div class="font-code-inline text-label-sm text-primary-fixed-dim font-semibold mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+  01 // CONTINUOUS AST INGESTION
+</div>
+<h3 class="font-headline-md text-xl text-primary mb-3 font-semibold group-hover:text-primary-container transition-colors">Syntax Over Noise</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed font-light">
+              Background Git hooks parse AST abstract syntax trees natively. BuildLog isolates genuine function mutations, schema updates, and dependency contracts while completely pruning cosmetic linter noise.
+            </p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/[0.04] font-code-inline text-label-sm text-secondary space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Tree-Sitter Diffing Engine</div>
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Zero git-history write access</div>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="group rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-primary-container/30 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(184,243,74,0.1)] transition-all duration-300">
+<div>
+<div class="font-code-inline text-label-sm text-primary-fixed-dim font-semibold mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+  02 // VECTOR MEMORY &amp; ANCHORS
+</div>
+<h3 class="font-headline-md text-xl text-primary mb-3 font-semibold group-hover:text-primary-container transition-colors">Deterministic Milestones</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed font-light">
+              High-dimensional vector embeddings anchor architectural pivots to exact git tags. Database migrations, breaking API alterations, and library refactors stay linked to the rationale behind them.
+            </p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/[0.04] font-code-inline text-label-sm text-secondary space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Parquet + SQLite Local Export</div>
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Architecture Records (ADRs)</div>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="group rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-primary-container/30 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(184,243,74,0.1)] transition-all duration-300">
+<div>
+<div class="font-code-inline text-label-sm text-primary-fixed-dim font-semibold mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+  03 // INSTANT COPILOT HANDOFF
+</div>
+<h3 class="font-headline-md text-xl text-primary mb-3 font-semibold group-hover:text-primary-container transition-colors">Zero Cold-Starts</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed font-light">
+              1-click deep links preload Cursor, Claude Code, and Windsurf with surgical clarity. The assistant receives exact delta contexts, active blocker resolutions, and zero token bloat.
+            </p>
+</div>
+<div class="mt-8 pt-6 border-t border-white/[0.04] font-code-inline text-label-sm text-secondary space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Native URI Protocol Handler</div>
+<div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary-fixed-dim">✓</span> Sub-2k token compact payloads</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. INTERACTIVE BENTO GRID: RADAR, DAILY SYNTHESIS & METRICS -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-20 md:py-32">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed-dim">Unified Engineering Canvas</span>
+<h2 class="font-headline-lg text-3xl md:text-4xl text-primary mt-2 font-bold tracking-tight">Live Intelligence, Continuous Synthesis</h2>
+</div>
+<p class="font-body-md text-body-md text-secondary max-w-md font-light">
+          Inspect your repositories not as raw commit logs, but as structured, living intelligence updated in milliseconds.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Bento Tile 1: Connected Repositories / Live Directory (Span 7) -->
+<div class="md:col-span-7 rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-white/15 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">folder_managed</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">Tracked Codebases</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary/70 font-code-inline">SYNCED: 4 REPOS</span>
+</div>
+<!-- List of Connected Repos -->
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3.5 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 transition-all duration-200">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<div>
+<div class="font-code-inline text-body-sm text-primary font-medium">acme-corp/lifeos-mono</div>
+<div class="font-body-sm text-xs text-secondary/80">3 active branches • Last commit 2m ago by @alex</div>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded border border-white/[0.06] text-primary-fixed-dim font-code-inline text-xs">AST Clean</span>
+</div>
+<div class="flex items-center justify-between p-3.5 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 transition-all duration-200">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<div>
+<div class="font-code-inline text-body-sm text-primary font-medium">acme-corp/saas-dashboard</div>
+<div class="font-body-sm text-xs text-secondary/80">1 active PR • Next.js 15 migration ready</div>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded border border-white/[0.06] text-primary-fixed-dim font-code-inline text-xs">Memory Ready</span>
+</div>
+<div class="flex items-center justify-between p-3.5 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 transition-all duration-200">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<div>
+<div class="font-code-inline text-body-sm text-primary font-medium">acme-corp/auth-core-rust</div>
+<div class="font-body-sm text-xs text-secondary/80">Zero drift • Cargo benchmark delta +12% ops</div>
+</div>
+</div>
+<span class="px-2.5 py-0.5 rounded border border-white/[0.06] text-secondary font-code-inline text-xs">Indexed</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-4 border-t border-white/[0.04] flex items-center justify-between text-secondary font-code-inline text-xs">
+<span>Automated Daily Snapshot: 23:59 UTC</span>
+<a class="text-primary-fixed-dim hover:underline hover:text-primary transition-colors" href="#">Webhooks Settings →</a>
+</div>
+</div>
+<!-- Bento Tile 2: Blocker & Drift Radar (Span 5) -->
+<div class="md:col-span-5 rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-white/15 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-rose-400 text-[20px]">warning</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">Blocker Radar</span>
+</div>
+<span class="px-2 py-0.5 rounded border border-rose-500/20 bg-rose-500/10 text-rose-400 text-label-sm font-semibold font-code-inline">1 UNRESOLVED</span>
+</div>
+<!-- Blocker Alert Box -->
+<div class="p-5 rounded-xl border border-rose-500/15 bg-rose-500/[0.03]">
+<div class="flex items-center gap-2 text-rose-400 text-body-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+                PgBouncer Pool Exhaustion Risk
+              </div>
+<p class="font-body-sm text-body-sm text-secondary mt-2 leading-relaxed">
+                Commit <span class="font-code-inline text-on-surface">91b0d2</span> introduced unpooled direct Prisma connection pooling in <span class="font-code-inline text-on-surface">worker/sync.ts</span>.
+              </p>
+<div class="mt-3 p-2.5 rounded-lg bg-black/40 border border-white/[0.04] text-xs font-code-inline text-primary-fixed-dim">
+                Wrap via client singleton in lib/db.ts
+              </div>
+</div>
+</div>
+<!-- Quick Action -->
+<div class="mt-6 pt-4 border-t border-white/[0.04] flex items-center justify-between">
+<span class="font-code-inline text-xs text-secondary/70">Detected in 850ms</span>
+<button class="px-3 py-1.5 rounded-lg border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/20 text-on-surface text-label-sm font-semibold transition-all duration-200">
+              Inject Fix to Cursor
+            </button>
+</div>
+</div>
+<!-- Bento Tile 3: Daily Executive Synthesis (Span 6) -->
+<div class="md:col-span-6 rounded-2xl border border-white/[0.06] bg-[#111311] p-8 hover:border-white/15 transition-all duration-300">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">summarize</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">Daily Intelligence Briefing</span>
+</div>
+<span class="font-code-inline text-xs text-secondary/70">TODAY • 18:00</span>
+</div>
+<div class="p-5 rounded-xl border border-white/[0.04] bg-white/[0.02] text-body-sm text-on-surface leading-relaxed font-body-md space-y-3">
+<p>
+<strong class="text-primary font-medium">What Shipped:</strong> Auth service migrated from session cookies to PASETO stateless cryptography. 4 PRs merged.
+            </p>
+<p>
+<strong class="text-primary font-medium">What Stalled:</strong> Webhook listener dropped 14 payloads due to timeout during DB roll. Fixed in commit <span class="font-code-inline text-primary-fixed-dim">#a38df</span>.
+            </p>
+<p>
+<strong class="text-primary font-medium">Next Action:</strong> Run end-to-end integration tests on billing worker before releasing staging.
+            </p>
+</div>
+</div>
+<!-- Bento Tile 4: Local Storage Sovereignty (Span 6) -->
+<div class="md:col-span-6 rounded-2xl border border-white/[0.06] bg-[#111311] p-8 flex flex-col justify-between hover:border-white/15 transition-all duration-300">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">database</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">Zero Lock-In Memory Export</span>
+</div>
+<span class="font-code-inline text-xs text-primary-fixed-dim">SOVEREIGN FORMAT</span>
+</div>
+<p class="font-body-md text-body-md text-secondary leading-relaxed font-light">
+              Your architectural graphs and vector memories belong entirely to you. Export raw knowledge databases into standard SQLite flat files or Apache Parquet columnar storage at any moment.
+            </p>
+</div>
+<div class="mt-8 flex flex-wrap items-center gap-3">
+<div class="px-3.5 py-2 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-white/15 font-code-inline text-xs text-on-surface flex items-center gap-2 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">file_download</span>
+<span>buildlog_memory.sqlite (14.2 MB)</span>
+</div>
+<div class="px-3.5 py-2 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-white/15 font-code-inline text-xs text-on-surface flex items-center gap-2 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">file_download</span>
+<span>milestones.parquet (3.8 MB)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. MISTRAL-INSPIRED PRIVACY & SOVEREIGN SECURITY -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-20 md:py-32">
+<div class="rounded-3xl border border-white/[0.08] bg-[#111311]/90 p-8 md:p-16 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] text-primary-fixed-dim font-code-inline text-label-sm mb-6">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            MISTRAL-GRADE SOVEREIGN DATA INTEGRITY
+          </div>
+<h2 class="font-headline-lg text-3xl md:text-5xl text-primary tracking-tight font-bold">
+            We index the structure.<br/>
+            You keep the source code.
+          </h2>
+<p class="font-body-lg text-body-lg text-secondary mt-6 leading-relaxed font-light">
+            BuildLog operates strictly on abstract syntax trees and structural token hashes. We never store source code on disk, never share vector projections, and enforce a cryptographically auditable zero-model-training policy.
+          </p>
+</div>
+<!-- Sovereign Pillars with soft translucent borders -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+<div class="p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:border-white/15 hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px] mb-3">verified_user</span>
+<div class="font-headline-sm text-body-md font-bold text-primary">SOC-2 Type II</div>
+<p class="font-body-sm text-secondary mt-1.5 font-light">Independently certified with annual third-party audits.</p>
+</div>
+<div class="p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:border-white/15 hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px] mb-3">key</span>
+<div class="font-headline-sm text-body-md font-bold text-primary">Client-Side KMS</div>
+<p class="font-body-sm text-secondary mt-1.5 font-light">Encrypt memory vectors with AWS KMS, GCP, or Vault.</p>
+</div>
+<div class="p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:border-white/15 hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px] mb-3">cloud_off</span>
+<div class="font-headline-sm text-body-md font-bold text-primary">Air-Gapped VPC</div>
+<p class="font-body-sm text-secondary mt-1.5 font-light">Deploy our Docker binary or Helm chart inside your VPC.</p>
+</div>
+<div class="p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:border-white/15 hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px] mb-3">do_not_disturb_on</span>
+<div class="font-headline-sm text-body-md font-bold text-primary">Zero Model Training</div>
+<p class="font-body-sm text-secondary mt-1.5 font-light">Your AST logic is never used to train public or private models.</p>
+</div>
+</div>
+<!-- Monochrome Logos with subtle opacity -->
+<div class="mt-16 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-6 text-secondary">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary/60">Engineers rely on BuildLog at:</span>
+<div class="flex flex-wrap items-center gap-8 md:gap-12 font-code-inline text-sm font-semibold tracking-wider text-secondary/70">
+<span class="hover:text-primary transition-colors cursor-default">STRIPE</span>
+<span class="hover:text-primary transition-colors cursor-default">VERCEL</span>
+<span class="hover:text-primary transition-colors cursor-default">SUPABASE</span>
+<span class="hover:text-primary transition-colors cursor-default">CLOUDFLARE</span>
+<span class="hover:text-primary transition-colors cursor-default">LINEAR</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. DEVELOPER DROP-IN MIGRATION (CLI & GITHUB APP) -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-16 md:py-24">
+<div class="rounded-3xl border border-white/[0.08] bg-[#0c0e0c] p-8 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-12">
+<div class="max-w-xl">
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed-dim">Frictionless Onboarding</span>
+<h2 class="font-headline-lg text-3xl md:text-4xl text-primary tracking-tight font-bold mt-2">
+            Install in under 30 seconds.
+          </h2>
+<p class="font-body-md text-body-md text-secondary mt-4 font-light leading-relaxed">
+            Whether you run solo or orchestrate 40 microservices across an organization, initialization takes a single terminal command.
+          </p>
+<div class="mt-6 flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-2 text-label-sm text-secondary font-code-inline">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              Automatic repo discovery
+            </div>
+<div class="flex items-center gap-2 text-label-sm text-secondary font-code-inline">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              Local `.buildlog` cache
+            </div>
+</div>
+</div>
+<!-- CLI Command Container with refined interactive copy -->
+<div class="w-full lg:w-auto flex-1 max-w-lg rounded-2xl border border-white/[0.08] bg-[#121512] p-6 shadow-xl">
+<div class="flex items-center justify-between text-secondary mb-3">
+<span class="font-code-inline text-label-sm text-secondary/70">Terminal Shell</span>
+<button class="flex items-center gap-1.5 font-label-sm text-label-sm text-primary-fixed-dim hover:text-primary transition-colors duration-200 cursor-pointer" id="copy-cli-btn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span id="copy-text">Copy</span>
+</button>
+</div>
+<div class="p-4 rounded-xl border border-white/[0.05] bg-black/60 font-code-inline text-code-inline text-primary flex items-center justify-between select-all">
+<span>npx @buildlog/cli init --all-repos</span>
+</div>
+<div class="mt-3 font-code-inline text-xs text-secondary/60 flex items-center gap-1.5">
+<span class="text-primary-fixed-dim">⚡</span>
+<span>Autodetects Git root &amp; verifies repo permissions in 0.4s</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. HIGH-IMPACT CLOSING CTA BANNER (Spacious & Tasteful) -->
+<section class="max-w-7xl mx-auto px-margin-desktop py-20 md:py-32">
+<div class="relative rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[#141714] to-[#0e110e] p-12 md:p-24 text-center overflow-hidden shadow-2xl light-sweep-border">
+<!-- Background decorative ambient glow -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary-container/[0.12] blur-[120px] rounded-full pointer-events-none anim-pulse-subtle"></div>
+<div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+<div class="w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center mb-8 shadow-xl shadow-primary-container/20">
+<span class="material-symbols-outlined text-on-primary-container text-[30px]">terminal</span>
+</div>
+<h2 class="font-headline-xl text-3xl md:text-5xl tracking-tight text-primary font-bold">
+            Never start from scratch again.
+          </h2>
+<p class="font-body-lg text-body-lg text-secondary mt-6 max-w-xl font-light leading-relaxed">
+            Deploy BuildLog to your repositories in under 60 seconds. Free for solo developers, infinitely scalable for team architectures.
+          </p>
+<div class="flex flex-wrap items-center justify-center gap-4 mt-10">
+<a class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-body-md font-semibold hover:bg-primary-fixed transition-all duration-300 hover:shadow-[0_0_30px_rgba(184,243,74,0.35)] hover:-translate-y-0.5 active:translate-y-0 shadow-lg" data-path="connect-github" href="#">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span>Connect with GitHub</span>
+</a>
+<a class="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/[0.08] bg-white/[0.03] text-on-surface hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 font-body-md text-body-md font-medium hover:-translate-y-0.5" data-path="pricing" href="#">
+<span>Schedule Enterprise Demo</span>
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</a>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-12 text-label-sm text-secondary/60 font-code-inline text-xs">
+<span>NO CREDIT CARD REQUIRED</span>
+<span>•</span>
+<span>GITHUB FREE TIER ACTIVE</span>
+<span>•</span>
+<span>UNLIMITED COMMITS</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Interactive Terminal Multi-Language Demo Switcher
+  const sampleLanguages = {
+    typescript: {
+      stream: [
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [PARSER] AST diff tree computed: +142 -28 lines in <span class="text-primary font-medium">apps/api/auth.ts</span></div>',
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [ANALYZER] Ignoring 84 linter re-formats. 2 architectural deltas detected.</div>',
+        '<div class="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] my-3"><div class="text-label-sm font-semibold text-primary-fixed-dim flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px]">psychology</span>Synthesized Architecture Decision (ADR #042):</div><div class="text-body-sm text-on-surface mt-1.5 font-sans leading-relaxed">"Swapped Redis Token Store for Ed25519 Stateless PASETO v4 to terminate multi-tenant session connection exhaustion under high concurrency."</div></div>',
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-rose-400">▲</span> [BLOCKER RADAR] Unmigrated consumer in <span class="text-primary">worker/billing.ts</span>: expects Redis socket.</div>',
+        '<div class="text-primary-fixed-dim font-medium pt-1 flex items-center gap-2"><span>✓ Vector memory index refreshed in 314ms. Ready for copilot handoff.</span><span class="inline-block w-2 h-4 bg-primary-fixed-dim anim-blink"></span></div>'
+      ],
+      json: `{\n  "project": "lifeos-production",\n  "active_branch": "feat/paseto-token-migration",\n  "architectural_context": {\n    "decision": "ADR-042: Stateless PASETO token integration",\n    "rationale": "Prevent connection starvations during JWT refresh",\n    "breaking_change": true\n  },\n  "agent_instructions": [\n    "Do not re-introduce Redis auth cache.",\n    "Fix billing worker auth headers before running tests."\n  ],\n  "uncommitted_ast_diffs": 0\n}`
+    },
+    rust: {
+      stream: [
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [CARGO AST] Parsed crate graph: 42 crates checked in 180ms.</div>',
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [MEM_SAFETY] Found async mutex lock across `.await` boundary in <span class="text-primary font-medium">engine/src/sync.rs</span>.</div>',
+        '<div class="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] my-3"><div class="text-label-sm font-semibold text-primary-fixed-dim flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px]">psychology</span>Synthesized ADR #089 (Rust Core):</div><div class="text-body-sm text-on-surface mt-1.5 font-sans leading-relaxed">"Replaced standard Tokio Mutex with crossbeam channels to eliminate thread contention latency spikes."</div></div>',
+        '<div class="text-primary-fixed-dim font-medium pt-1 flex items-center gap-2"><span>✓ Zero deadlock vectors detected. Parquet milestone tagged.</span><span class="inline-block w-2 h-4 bg-primary-fixed-dim anim-blink"></span></div>'
+      ],
+      json: `{\n  "crate": "buildlog-core-engine",\n  "target": "x86_64-unknown-linux-musl",\n  "architecture_memory": {\n    "adr": "ADR-089: Zero-allocation concurrency",\n    "memory_model": "lockfree-crossbeam-channels",\n    "unsafe_blocks_count": 0\n  },\n  "copilot_rule": "Enforce no blocking IO calls inside tokio runtime."\n}`
+    },
+    python: {
+      stream: [
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [AST] Evaluated PyTorch quantization pipeline in <span class="text-primary font-medium">ml/quantize.py</span>.</div>',
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [NUMPY] Converted dense tensor projections to int8 dynamic scale.</div>',
+        '<div class="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] my-3"><div class="text-label-sm font-semibold text-primary-fixed-dim flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px]">psychology</span>Synthesized ADR #112 (Pipeline):</div><div class="text-body-sm text-on-surface mt-1.5 font-sans leading-relaxed">"Applied FP16 mixed precision to vector projections, reducing GPU memory overhead by 46%."</div></div>',
+        '<div class="text-primary-fixed-dim font-medium pt-1 flex items-center gap-2"><span>✓ Vector memory synchronized with Parquet ledger.</span><span class="inline-block w-2 h-4 bg-primary-fixed-dim anim-blink"></span></div>'
+      ],
+      json: `{\n  "pipeline": "embedding-distiller-v2",\n  "framework": "PyTorch 2.3",\n  "precision": "FP16-dynamic",\n  "vram_delta_mb": -1420,\n  "next_task": "Update batch inferencing runner in server.py"\n}`
+    },
+    go: {
+      stream: [
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [GO AST] Analyzed goroutine dispatcher in <span class="text-primary font-medium">cmd/worker/main.go</span>.</div>',
+        '<div class="text-on-surface-variant flex items-center gap-2.5"><span class="text-primary-fixed-dim">▶</span> [GC PROFILE] Identified heap allocation leak in channel buffer ring.</div>',
+        '<div class="p-4 rounded-xl border border-white/[0.06] bg-white/[0.02] my-3"><div class="text-label-sm font-semibold text-primary-fixed-dim flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px]">psychology</span>Synthesized ADR #023 (Go Worker):</div><div class="text-body-sm text-on-surface mt-1.5 font-sans leading-relaxed">"Switched to sync.Pool bounded byte buffers to stop GC stop-the-world spikes under 100k req/sec."</div></div>',
+        '<div class="text-primary-fixed-dim font-medium pt-1 flex items-center gap-2"><span>✓ Benchmarks verified: p99 latency dropped from 42ms to 3.8ms.</span><span class="inline-block w-2 h-4 bg-primary-fixed-dim anim-blink"></span></div>'
+      ],
+      json: `{\n  "service": "distributed-task-worker",\n  "go_version": "1.23",\n  "concurrency_fix": "sync.Pool recycling",\n  "p99_latency_ms": 3.8,\n  "copilot_directives": [\n    "Always reuse byte buffer references.",\n    "Avoid unbuffered channel fanouts."\n  ]\n}`
+    }
+  };
+
+  const tabs = document.querySelectorAll('.lang-tab');
+  const streamContainer = document.getElementById('live-stream-content');
+  const jsonContainer = document.getElementById('json-context-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Toggle Tab Active Classes with smooth pill transition
+      tabs.forEach(t => {
+        t.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-semibold', 'shadow-sm');
+        t.classList.add('text-secondary');
+      });
+      tab.classList.add('bg-primary-container', 'text-on-primary-container', 'font-semibold', 'shadow-sm');
+      tab.classList.remove('text-secondary');
+
+      const lang = tab.getAttribute('data-lang');
+      const data = sampleLanguages[lang];
+
+      if (data && streamContainer && jsonContainer) {
+        streamContainer.style.opacity = '0.3';
+        jsonContainer.style.opacity = '0.3';
+        setTimeout(() => {
+          streamContainer.innerHTML = data.stream.join('');
+          jsonContainer.textContent = data.json;
+          streamContainer.style.transition = 'opacity 0.25s ease';
+          jsonContainer.style.transition = 'opacity 0.25s ease';
+          streamContainer.style.opacity = '1';
+          jsonContainer.style.opacity = '1';
+        }, 150);
+      }
+    });
+  });
+
+  // Copy CLI command button micro-interaction
+  const copyBtn = document.getElementById('copy-cli-btn');
+  const copyText = document.getElementById('copy-text');
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('npx @buildlog/cli init --all-repos').then(() => {
+        copyText.textContent = 'Copied!';
+        copyBtn.classList.add('text-primary-container');
+        setTimeout(() => {
+          copyText.textContent = 'Copy';
+          copyBtn.classList.remove('text-primary-container');
+        }, 2200);
+      });
+    });
+  }
+
+  // Smooth scroll to demo terminal when clicking Hero demo button
+  const tourBtn = document.getElementById('open-interactive-tour');
+  if (tourBtn) {
+    tourBtn.addEventListener('click', () => {
+      const demoSelector = document.getElementById('demo-language-selector');
+      if (demoSelector) {
+        demoSelector.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+</script></main><footer class="w-full bg-[#080908] border-t border-white/[0.06]"><div class="max-w-7xl mx-auto px-margin-desktop py-20"><div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16"><div class="col-span-2"><div class="flex items-center gap-2 mb-4"><div class="w-6 h-6 rounded-md bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[14px]">terminal</span></div><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">BuildLog</span></div><p class="font-body-sm text-body-sm text-secondary/80 max-w-sm mb-6 leading-relaxed font-light">Automated dev intelligence and continuous project memory. Capturing engineering decisions, commit context, and architecture evolutions in real time.</p><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400"></span><span class="font-label-sm text-label-sm text-secondary">All Systems Operational • 99.98% Uptime</span></div></div><div><div class="font-label-md text-label-md text-primary uppercase tracking-wider mb-4 font-semibold">Product</div><ul class="space-y-2.5"><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="product" href="#">Continuous Memory</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="engine" href="#">Context Engine</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="integrations" href="#">GitHub App</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="pricing" href="#">Pricing Matrix</a></li></ul></div><div><div class="font-label-md text-label-md text-primary uppercase tracking-wider mb-4 font-semibold">Resources</div><ul class="space-y-2.5"><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="docs" href="#">Documentation</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="architecture" href="#">System Architecture</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="api-reference" href="#">API Reference</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="changelog" href="#">Changelog</a></li></ul></div><div><div class="font-label-md text-label-md text-primary uppercase tracking-wider mb-4 font-semibold">Trust &amp; Security</div><ul class="space-y-2.5"><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="security" href="#">Security &amp; SOC2</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="privacy-policy" href="#">Privacy Policy</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="terms" href="#">Terms of Service</a></li><li class="font-body-sm text-body-sm text-secondary hover:text-primary transition-colors"><a data-path="system-status" href="#">System Status</a></li></ul></div></div><div class="pt-8 border-t border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-4"><span class="font-code-inline text-xs text-secondary/60">© 2025 BuildLog Systems Inc. Precision Dev Intelligence.</span><div class="flex items-center gap-6 font-code-inline text-xs text-secondary/60"><span>LATENCY: 12ms</span><span>ENCRYPTION: AES-256</span></div></div></div></footer></body></html>

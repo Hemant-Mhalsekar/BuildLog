@@ -1,0 +1,534 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#161d16", "on-primary": "#233600", "secondary": "#c0c9bd", "on-tertiary": "#2b322b", "secondary-fixed-dim": "#c0c9bd", "tertiary-fixed-dim": "#c1c9be", "surface-bright": "#383a37", "on-primary-fixed": "#131f00", "on-secondary-container": "#afb8ac", "tertiary-fixed": "#dde5d9", "primary": "#fcffec", "tertiary": "#f9fff5", "tertiary-container": "#dbe3d7", "background": "#121412", "surface-tint": "#9fd830", "inverse-primary": "#486800", "error": "#ffb4ab", "secondary-fixed": "#dce5d9", "surface-container-lowest": "#0d0f0d", "inverse-surface": "#e2e3df", "surface-container-low": "#1a1c1a", "on-error": "#690005", "on-primary-fixed-variant": "#354e00", "on-surface": "#e2e3df", "outline-variant": "#434936", "primary-fixed-dim": "#9fd830", "surface-variant": "#333533", "on-background": "#e2e3df", "surface-container": "#1e201e", "error-container": "#93000a", "surface-container-high": "#292a28", "inverse-on-surface": "#2f312e", "on-secondary-fixed": "#161d16", "on-primary-container": "#4c6d00", "surface-container-highest": "#333533", "on-tertiary-fixed-variant": "#414940", "on-tertiary-container": "#5e655c", "outline": "#8d937c", "on-error-container": "#ffdad6", "surface-dim": "#121412", "on-secondary": "#2a322a", "on-surface-variant": "#c3c9b0", "primary-container": "#b8f34a", "secondary-container": "#404940", "surface": "#121412", "primary-fixed": "#baf54c", "on-secondary-fixed-variant": "#404940" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "margin-tablet": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem", "space-md": "1rem" }, "fontFamily": { "headline-xl": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "label-md": [ "JetBrains Mono" ], "code-inline": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "label-sm": [ "JetBrains Mono" ], "body-sm": [ "Inter" ], "headline-lg": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-xl": [ "3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-lg-mobile": [ "1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-md": [ "0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.02em", "fontWeight": "500" } ], "code-inline": [ "0.875rem", { "lineHeight": "1.375rem", "letterSpacing": "0em", "fontWeight": "400" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-md": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "headline-xl-mobile": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "label-sm": [ "0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-lg": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-sm": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest z-40 flex flex-col justify-between border-r border-outline-variant/30 select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between border-b border-outline-variant/20"><div class="flex items-center gap-space-sm"><div class="h-8 w-8 rounded-lg bg-surface-container-high border border-outline-variant/50 flex items-center justify-center font-code-inline text-code-inline font-medium text-primary-container shadow-inner">&gt;<span class="text-primary-container font-bold inline-block ml-0.5 animate-pulse">_</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-[1.125rem] tracking-tight text-on-surface font-semibold">BuildLog</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span></div><span class="font-label-sm text-[0.625rem] tracking-wider text-outline uppercase font-semibold">Automated Dev Intel</span></div></div><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high border border-primary-container/30 text-primary-container font-medium tracking-wide">v3.0</span></div><div class="px-space-md pt-space-md pb-space-sm"><button class="w-full flex items-center justify-between px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors group" type="button"><div class="flex items-center gap-space-sm"><span class="font-code-inline text-[13px] text-outline group-hover:text-primary-container font-semibold">&gt;</span><span class="font-body-sm text-body-sm">Quick Switch repo or command...</span></div><div class="flex items-center gap-0.5"><kbd class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant border border-outline-variant/40">⌘K</kbd></div></button></div><div class="px-space-md py-space-xs"><div class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-2 py-1 font-semibold flex items-center justify-between"><span>Intelligence &amp; Flow</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container animate-pulse"></span></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-surface-container text-on-surface border-l-2 border-primary-container font-medium"><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="overview" href="#"><span>Overview</span><span class="font-label-sm text-[11px] text-outline font-medium">01</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="my-projects" href="#"><span>My Projects</span><span class="font-label-sm text-[11px] text-outline font-medium">3</span></a><a aria-current="page" class="flex items-center justify-between px-2.5 py-2 rounded-r-lg transition-all bg-surface-container text-on-surface border-l-2 border-primary-container font-medium" data-path="activity-timeline" href="#"><span>Activity Timeline</span><span class="font-label-sm text-[11px] text-outline font-medium">Live</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="project-memory" href="#"><span class="flex items-center gap-1.5"><span>Project Memory</span><span class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span></span><span class="font-label-sm text-[10px] px-1 py-0.2 rounded bg-surface-container-high text-primary-container border border-primary-container/30 uppercase">Sync</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="integrations" href="#"><span>Integrations</span><span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-surface-container-high text-outline">Connected</span></a><a class="flex items-center justify-between px-2.5 py-2 rounded-r-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="settings" href="#"><span>Settings</span><span class="font-label-sm text-[11px] text-outline font-medium">⌘,</span></a></nav></div><div class="px-space-md pt-space-sm"><div class="flex items-center justify-between px-2 py-1"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">Connected Repositories</span><button class="flex items-center text-outline hover:text-primary-container transition-colors" title="Add repository" type="button"><span class="font-label-sm text-[11px] font-code-inline">+ADD</span></button></div><nav class="flex flex-col gap-0.5" data-active-classes="bg-surface-container text-on-surface font-medium"><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-lifeos" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_8px_#b8f34a]"></span><span class="truncate font-code-inline text-[12px]">alexchen/lifeos</span></span><span class="font-label-sm text-[10px] text-primary-container uppercase font-mono">active</span></a><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-saas-dashboard" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span><span class="truncate font-code-inline text-[12px]">alexchen/saas-dashboard</span></span><span class="font-label-sm text-[10px] text-outline font-mono">synced</span></a><a class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="repo-alexchen-supabase-starter" href="#"><span class="flex items-center gap-space-sm min-w-0"><span class="w-1.5 h-1.5 rounded-full bg-outline"></span><span class="truncate font-code-inline text-[12px]">alexchen/supabase-starter</span></span><span class="font-label-sm text-[10px] text-outline font-mono">synced</span></a></nav></div></div><div class="p-space-sm border-t border-outline-variant/30"><div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low border border-outline-variant/20"><div class="flex items-center gap-space-sm min-w-0"><div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center justify-center shrink-0 font-code-inline text-label-md text-primary-container font-semibold">AC</div><div class="flex flex-col min-w-0"><span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Alex Chen</span><span class="font-label-sm text-[11px] text-outline font-code-inline truncate">alexchen-gh</span></div></div><div class="flex items-center gap-1.5 shrink-0"><div class="flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-primary-container font-label-sm text-label-sm font-medium"><span class="font-code-inline text-[11px]">⚡</span><span>14d</span></div><button class="text-outline hover:text-on-surface transition-colors p-1" title="Sign out" type="button"><span class="font-code-inline text-[13px]">↪</span></button></div></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 z-30"><div class="h-16 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0"><div class="flex items-center gap-space-xs font-code-inline text-label-md shrink-0"><span class="text-primary-container font-semibold tracking-wide">BuildLog</span><span class="text-outline">v3.0</span><span class="px-1.5 py-0.5 rounded bg-surface-container-high border border-primary-container/20 text-primary-container text-[10px] font-bold tracking-widest uppercase">Automated</span></div><div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/30"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-[11px] text-on-surface-variant font-code-inline">GitHub App Connected • Auto-syncing every 5m</span></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-body-sm text-body-sm hover:border-outline-variant hover:bg-surface-container transition-all" type="button"><span class="font-code-inline text-primary-container font-bold text-[12px]">+</span><span class="font-code-inline text-[12px]">Connect Repository</span></button><button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-body-sm text-body-sm font-semibold hover:shadow-[0_0_16px_rgba(184,243,74,0.35)] transition-all" type="button"><span class="font-code-inline text-[13px] font-bold">⚡</span><span>Resume Context</span><kbd class="hidden sm:inline-block font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-black/20 text-on-primary-container font-mono ml-1">⌧R</kbd></button><div class="h-5 w-[1px] bg-outline-variant/30 mx-1"></div><button class="relative p-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-lg hover:bg-surface-container-low" title="Notifications" type="button"><span class="font-code-inline text-[14px]">◈</span><span class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span></button><div class="flex items-center gap-2 pl-1"><div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant/50 flex items-center justify-center font-code-inline text-[11px] font-semibold text-primary-container" title="Alex Chen (Solo Founder)">AC</div></div></div></div></header><main class="w-full pt-16 bg-surface-container-lowest flex-1"><div class="flex flex-col w-full">
+<!-- Interactive & Filter Controller Logic -->
+<script>
+    function filterEvents(type) {
+      const items = document.querySelectorAll('[data-event-type]');
+      const buttons = document.querySelectorAll('.filter-tab-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-surface-container-high', 'text-primary-container', 'shadow-sm');
+        btn.classList.add('text-outline', 'bg-transparent');
+      });
+      event.currentTarget.classList.remove('text-outline', 'bg-transparent');
+      event.currentTarget.classList.add('bg-surface-container-high', 'text-primary-container', 'shadow-sm');
+
+      items.forEach(el => {
+        if (type === 'all' || el.getAttribute('data-event-type') === type) {
+          el.style.display = 'flex';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    function toggleRawPayload(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.toggle('hidden');
+      }
+    }
+
+    function copyToClipboard(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btnElement.innerHTML;
+        btnElement.innerHTML = '<span class="material-symbols-outlined text-[13px] text-primary-container">check</span> Copied!';
+        setTimeout(() => { btnElement.innerHTML = original; }, 1800);
+      });
+    }
+  </script>
+<!-- Canvas Container with bespoke asymmetric bento system -->
+<div class="w-full max-w-[1440px] mx-auto p-margin md:p-margin-tablet lg:p-margin-desktop flex flex-col gap-space-lg">
+<!-- Screen Title & Live Telemetry Stream Strip -->
+<div class="flex flex-col gap-space-sm pb-space-xs">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="h-10 w-1 rounded-full bg-primary-container shadow-[0_0_12px_#b8f34a]"></div>
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Activity Timeline</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-low text-primary-container font-label-sm text-label-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span>Ingestion Active</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-0.5">
+              Continuous chronological ledger of commits, branch activity, pull requests, and automated AI memory syntheses across all connected repositories.
+            </p>
+</div>
+</div>
+<!-- System Counters Strip -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-wider">Total Ingested</span>
+<span class="font-code-inline text-label-md font-semibold text-primary">1,248 events</span>
+</div>
+<div class="h-6 w-[1px] bg-surface-container-highest mx-2"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-wider">Compression</span>
+<span class="font-code-inline text-label-md font-semibold text-primary-container">15 : 1 ratio</span>
+</div>
+<div class="h-6 w-[1px] bg-surface-container-highest mx-2"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-wider">Poll Interval</span>
+<span class="font-code-inline text-label-md font-semibold text-secondary">30s live hook</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filters, Command Query & Control Matrix Bar -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-md rounded-xl shadow-md">
+<!-- Search and primary selectors -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
+<!-- Search query input with keycap shortcut -->
+<div class="lg:col-span-6 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-14 rounded-lg bg-surface-container-lowest text-on-surface font-code-inline text-code-inline placeholder:text-outline placeholder:font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="Search events by commit hash, PR title, branch, author, or keyword..." type="text">
+<kbd class="absolute right-3 font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-high text-outline">
+            /
+          </kbd>
+</div>
+<!-- Scope Controls -->
+<div class="lg:col-span-6 flex flex-wrap items-center justify-end gap-space-sm">
+<!-- Repo Selector Dropdown -->
+<div class="relative">
+<button class="h-10 px-3 flex items-center gap-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container text-body-sm font-body-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary-container">source</span>
+<span class="font-code-inline text-[12px]">Repo: All Connected (6)</span>
+<span class="material-symbols-outlined text-[16px] text-outline">expand_more</span>
+</button>
+</div>
+<!-- Time Window -->
+<div class="relative">
+<button class="h-10 px-3 flex items-center gap-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container text-body-sm font-body-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span class="font-code-inline text-[12px]">Last 7 Days</span>
+<span class="material-symbols-outlined text-[16px] text-outline">expand_more</span>
+</button>
+</div>
+<!-- Raw Payload Toggle -->
+<label class="flex items-center gap-2 h-10 px-3 rounded-lg bg-surface-container-lowest cursor-pointer select-none text-on-surface-variant hover:text-on-surface transition-colors">
+<input class="rounded bg-surface-container-high text-primary-container focus:ring-0 focus:ring-offset-0 cursor-pointer h-3.5 w-3.5" id="globalRawToggle" onchange="document.querySelectorAll('.raw-payload-drawer').forEach(d =&gt; this.checked ? d.classList.remove('hidden') : d.classList.add('hidden'))" type="checkbox">
+<span class="font-code-inline text-[11px] font-medium uppercase tracking-wider text-outline">Raw Payloads</span>
+</label>
+</div>
+</div>
+<!-- Quick Filter Category Tabs -->
+<div class="flex items-center justify-between overflow-x-auto pt-space-xs gap-space-sm no-scrollbar">
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-surface-container-high text-primary-container font-label-md text-label-md transition-all" onclick="filterEvents('all')">
+            All Events <span class="ml-1 opacity-70">(1,248)</span>
+</button>
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-transparent text-outline hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="filterEvents('ai-summary')">
+<span class="h-1.5 w-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#b8f34a]"></span>
+            AI Synthesized Summaries <span class="ml-1 opacity-70">(84)</span>
+</button>
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-transparent text-outline hover:text-on-surface font-label-md text-label-md transition-all" onclick="filterEvents('commit')">
+            Commits &amp; Pushes <span class="ml-1 opacity-70">(712)</span>
+</button>
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-transparent text-outline hover:text-on-surface font-label-md text-label-md transition-all" onclick="filterEvents('pr')">
+            Pull Requests <span class="ml-1 opacity-70">(128)</span>
+</button>
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-transparent text-outline hover:text-on-surface font-label-md text-label-md transition-all" onclick="filterEvents('issue')">
+            Issues &amp; Discussions <span class="ml-1 opacity-70">(94)</span>
+</button>
+<button class="filter-tab-btn px-3 py-1.5 rounded-lg bg-transparent text-outline hover:text-on-surface font-label-md text-label-md transition-all" onclick="filterEvents('release')">
+            Releases &amp; Tags <span class="ml-1 opacity-70">(22)</span>
+</button>
+</div>
+<div class="flex items-center gap-2 shrink-0 pl-space-md text-outline font-label-sm text-[11px]">
+<span>Auto-refresh: <strong>30s</strong></span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</div>
+</div>
+</div>
+<!-- Main Dynamic 12-Column Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Chronological Timeline Feed (8 of 12 columns) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Date Marker: Today -->
+<div class="flex items-center gap-space-md">
+<span class="font-code-inline text-label-md text-primary font-semibold tracking-wider uppercase">TODAY — OCTOBER 24</span>
+<div class="flex-1 h-[1px] bg-surface-container-high"></div>
+<span class="font-label-sm text-label-sm text-outline">184 events captured</span>
+</div>
+<!-- 1. AI MEMORY SYNTHESIS CARD (High Priority Bento Module) -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/30 hover:border-outline-variant/60 transition-colors" data-event-type="ai-summary">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary-container font-label-sm text-label-sm font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+AI Synthesis
+</span>
+<span class="font-code-inline text-label-sm text-on-surface-variant font-medium">alexchen/supabase-starter</span>
+<span class="text-outline text-[11px] font-label-sm">Yesterday, 6:15 PM</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">22 commits • 4 PRs</span>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-primary">
+AI Summary: Row-Level Security (RLS) Hardening &amp; Auth Bypass Prevention
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+Sprint focused on multi-tenant isolation. All tables in the public schema now enforce RLS policies with strict JWT claim validation. Audit scripts confirmed zero leaking records across sandbox tenant partitions.
+</p>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface hover:text-primary text-body-sm transition-colors" onclick="copyToClipboard('Supabase Starter RLS Hardening: Public schema multi-tenant isolation validated with zero leaking partition records.', this)">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>Copy Context</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 2. RAW GITHUB EVENT: COMMIT PUSH -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/20 hover:border-outline-variant/40 transition-colors" data-event-type="commit">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-code-inline text-label-sm text-primary font-medium">alexchen</span>
+<span class="font-body-sm text-body-sm text-outline">pushed 3 commits to</span>
+<span class="font-code-inline text-label-sm text-secondary bg-surface-container px-1.5 py-0.5 rounded">feat/hnsw-pgvector-index</span>
+<span class="font-code-inline text-label-sm text-outline">in alexchen/lifeos</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">42s ago</span>
+</div>
+<div class="flex flex-col gap-1.5 mt-space-xs">
+<div class="flex items-center justify-between py-1 px-1 hover:bg-surface-container rounded transition-colors text-body-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-code-inline text-label-sm text-outline">7f9a2e1</span>
+<span class="text-on-surface truncate">add pgvector index script and query benchmark</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline shrink-0 ml-2">+142 / -18</span>
+</div>
+<div class="flex items-center justify-between py-1 px-1 hover:bg-surface-container rounded transition-colors text-body-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-code-inline text-label-sm text-outline">4b901a8</span>
+<span class="text-on-surface truncate">correct cosine distance operator to native &lt;=&gt;</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline shrink-0 ml-2">+8 / -4</span>
+</div>
+<div class="flex items-center justify-between py-1 px-1 hover:bg-surface-container rounded transition-colors text-body-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="font-code-inline text-label-sm text-outline">3d21c09</span>
+<span class="text-on-surface truncate">add synthetic load runner for 50k mock vectors</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline shrink-0 ml-2">+95 / -0</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t border-outline-variant/20 text-body-sm">
+<div class="flex items-center gap-space-md">
+<a class="font-code-inline text-label-sm text-outline hover:text-primary flex items-center gap-1 transition-colors" href="#">
+<span>View Diff</span>
+<span class="material-symbols-outlined text-[13px]">north_east</span>
+</a>
+<button class="font-code-inline text-label-sm text-outline hover:text-on-surface flex items-center gap-1 transition-colors" onclick="copyToClipboard('7f9a2e1 feat: add pgvector index script and query benchmark\n4b901a8 fix: correct cosine distance operator to native &lt;==&gt;\n3d21c09 test: add synthetic load runner for 50k mock vectors', this)">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<button class="font-code-inline text-label-sm text-outline hover:text-secondary transition-colors" onclick="toggleRawPayload('payload-commit-1')">
+JSON Payload
+</button>
+</div>
+<div class="raw-payload-drawer hidden mt-space-sm p-space-sm rounded bg-surface-container-lowest font-code-inline text-code-inline text-secondary border border-outline-variant/20" id="payload-commit-1">
+<pre class="overflow-x-auto text-[11px]"><code>{
+  "event": "push",
+  "repository": "alexchen/lifeos",
+  "ref": "refs/heads/feat/hnsw-pgvector-index",
+  "head_commit": "7f9a2e1e4a2c09192bb3b",
+  "commits_count": 3
+}</code></pre>
+</div>
+</div>
+<!-- 3. RAW GITHUB EVENT: PULL REQUEST (Cyan / Indigo Architectural Tone) -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/20 hover:border-outline-variant/40 transition-colors" data-event-type="pr">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-code-inline text-label-sm text-primary font-medium">alexchen</span>
+<span class="font-body-sm text-body-sm text-outline">opened</span>
+<span class="font-code-inline text-label-sm text-secondary font-semibold">PR #43</span>
+<span class="font-code-inline text-label-sm text-outline">in alexchen/lifeos</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">18m ago</span>
+</div>
+<div class="flex flex-col gap-1.5 mt-space-xs">
+<h3 class="font-headline-sm text-[1.125rem] text-primary font-medium">
+Configure connection pooling timeout in PgBouncer
+</h3>
+<div class="flex flex-wrap items-center gap-2 font-code-inline text-[12px] text-outline">
+<span class="text-secondary">fix/pgbouncer-pool-timeout</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+<span class="text-on-surface">main</span>
+<span class="text-outline ml-2">• 3 checks passed (1m 42s)</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t border-outline-variant/20 text-body-sm">
+<a class="font-code-inline text-label-sm text-outline hover:text-primary flex items-center gap-1 transition-colors" href="#">
+<span>Review PR</span>
+<span class="material-symbols-outlined text-[13px]">north_east</span>
+</a>
+<button class="font-code-inline text-label-sm text-outline hover:text-secondary transition-colors" onclick="toggleRawPayload('payload-pr-43')">
+JSON Payload
+</button>
+</div>
+<div class="raw-payload-drawer hidden mt-space-sm p-space-sm rounded bg-surface-container-lowest font-code-inline text-code-inline text-secondary border border-outline-variant/20" id="payload-pr-43">
+<pre class="overflow-x-auto text-[11px]"><code>{
+  "action": "opened",
+  "number": 43,
+  "pull_request": {
+    "title": "Configure connection pooling timeout in PgBouncer",
+    "state": "open",
+    "changed_files": 4,
+    "additions": 48,
+    "deletions": 12
+  }
+}</code></pre>
+</div>
+</div>
+<!-- 4. RAW GITHUB EVENT: BLOCKER / ISSUE DETECTED (High Urgency) -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/20 hover:border-outline-variant/40 transition-colors" data-event-type="issue">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+Blocker
+</span>
+<span class="font-code-inline text-label-sm text-outline">Issue #91</span>
+<span class="font-code-inline text-label-sm text-outline">in alexchen/lifeos</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">45m ago</span>
+</div>
+<div class="flex flex-col gap-1.5 mt-space-xs">
+<h3 class="font-headline-sm text-[1.125rem] text-error font-semibold font-code-inline">
+ERR_PGBOUNCER_MAXCLIENTS_EXCEEDED under concurrent embedding queries
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+Connection pool saturated during batch semantic indexing tests. Flagged as active sprint blocker.
+</p>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t border-outline-variant/20 text-body-sm">
+<a class="font-code-inline text-label-sm text-error hover:underline flex items-center gap-1" href="#">
+<span>View Issue</span>
+<span class="material-symbols-outlined text-[13px]">north_east</span>
+</a>
+<span class="font-label-sm text-label-sm text-outline">alexchen</span>
+</div>
+</div>
+<!-- 5. RAW GITHUB EVENT: MERGE & RELEASE -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/20 hover:border-outline-variant/40 transition-colors" data-event-type="release">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-code-inline text-label-sm text-primary font-medium">alexchen</span>
+<span class="font-body-sm text-body-sm text-outline">tagged</span>
+<span class="font-code-inline text-label-sm text-secondary font-semibold">v1.2.0-rc2</span>
+<span class="font-code-inline text-label-sm text-outline">in alexchen/saas-dashboard</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">1h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs">
+Merged PR #18 into main: Automated CI pipeline passed container verification and pushed release artifacts to Registry.
+</p>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t border-outline-variant/20 text-body-sm">
+<a class="font-code-inline text-label-sm text-outline hover:text-primary flex items-center gap-1 transition-colors" href="#">
+<span>Release Notes</span>
+<span class="material-symbols-outlined text-[13px]">north_east</span>
+</a>
+<span class="font-code-inline text-label-sm text-outline">a19d80f</span>
+</div>
+</div>
+<!-- Date Marker: Yesterday -->
+<div class="flex items-center gap-space-md pt-space-md">
+<span class="font-code-inline text-label-md text-outline font-semibold tracking-wider uppercase">YESTERDAY — OCTOBER 23</span>
+<div class="flex-1 h-[1px] bg-surface-container-high"></div>
+<span class="font-label-sm text-label-sm text-outline">312 events captured</span>
+</div>
+<!-- 6. SECOND AI MEMORY SYNTHESIS (Archival Sprint Summary) -->
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg relative overflow-hidden border border-outline-variant/30 hover:border-outline-variant/60 transition-colors" data-event-type="ai-summary">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary-container font-label-sm text-label-sm font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+AI Synthesis
+</span>
+<span class="font-code-inline text-label-sm text-on-surface-variant font-medium">alexchen/lifeos</span>
+<span class="text-outline text-[11px] font-label-sm">Today, 2:30 PM</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline">14 commits • 2 PRs</span>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-primary">
+AI Summary: Vector Indexing &amp; Edge Latency Hardening for LifeOS
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+pgvector HNSW index implementation successfully established across embedding tables. Benchmark results confirm p95 search latency decreased from 420ms down to 38.2ms (-90.9%). Query execution now runs through native cosine distance operator <code class="font-code-inline text-secondary bg-surface-container px-1.5 py-0.5 rounded">&lt;=&gt;</code> instead of CPU-bound JavaScript math. Currently staging PgBouncer pool sizing adjustments to eliminate transient client timeouts during cold starts.
+</p>
+<div class="mt-space-sm flex flex-col gap-1 border-t border-outline-variant/20 pt-space-sm">
+<div class="text-[11px] font-label-sm uppercase tracking-wider text-outline mb-1">Evidence Ledger</div>
+<a class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-container transition-colors group/item text-body-sm" href="#">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-code-inline text-label-sm text-outline">7f9a2e1</span>
+<span class="text-on-surface truncate">feat: add pgvector index script &amp; benchmark</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline font-code-inline shrink-0">2h ago ↗</span>
+</a>
+<a class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-container transition-colors group/item text-body-sm" href="#">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-code-inline text-label-sm text-outline">PR #42</span>
+<span class="text-on-surface truncate">Migrate cosine similarity to native pgvector operator</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline font-code-inline shrink-0">Merged ↗</span>
+</a>
+<a class="flex items-center justify-between py-1 px-1.5 rounded hover:bg-surface-container transition-colors group/item text-body-sm" href="#">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-code-inline text-label-sm text-outline">Issue #89</span>
+<span class="text-on-surface truncate">High overhead in JS-side cosine calculations</span>
+</div>
+<span class="font-label-sm text-[11px] text-outline font-code-inline shrink-0">Resolved ↗</span>
+</a>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-body-sm">
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface hover:text-primary transition-colors text-body-sm" onclick="copyToClipboard('LifeOS Vector Indexing: pgvector HNSW implementation reduced p95 search latency to 38.2ms (-90.9%). Native cosine distance operator deployed via PR #42.', this)">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>Copy Context</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-body-sm transition-colors">
+<span class="material-symbols-outlined text-[14px]">history_edu</span>
+<span>Export ADR</span>
+</button>
+</div>
+<button class="font-code-inline text-label-sm text-outline hover:text-on-surface flex items-center gap-1" onclick="toggleRawPayload('payload-ai-1')">
+<span>Embedding Delta</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</div>
+<div class="raw-payload-drawer hidden mt-space-sm p-space-sm rounded bg-surface-container-lowest font-code-inline text-code-inline text-secondary border border-outline-variant/20" id="payload-ai-1">
+<pre class="overflow-x-auto text-[11px] leading-relaxed"><code>{
+  "synthesis_id": "syn_948f219b",
+  "vector_latency_ms": {"before": 420.4, "after": 38.2, "improvement": "-90.9%"},
+  "affected_tables": ["knowledge_nodes", "memory_embeddings"],
+  "index_type": "hnsw_cosine",
+  "memory_tags": ["database", "performance", "pgvector", "infra"]
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Rail Context, Telemetry Pulse & Visualizations (4 of 12 columns) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg border border-outline-variant/20 gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">query_stats</span>
+<h3 class="font-code-inline text-label-md font-semibold text-primary">Ingestion Pulse</h3>
+</div>
+<span class="font-label-sm text-[11px] text-outline font-code-inline">184 events today</span>
+</div>
+<div class="w-full h-24 flex items-end justify-between gap-1.5 pt-2 pb-1 px-1 bg-surface-container-lowest rounded-lg">
+<div class="w-full flex flex-col items-center gap-1 group" title="08:00 - 12 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 24%"></div>
+<span class="font-label-sm text-[9px] text-outline">08</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="09:00 - 24 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 48%"></div>
+<span class="font-label-sm text-[9px] text-outline">09</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="10:00 - 38 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 65%"></div>
+<span class="font-label-sm text-[9px] text-outline">10</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="11:00 - 18 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 35%"></div>
+<span class="font-label-sm text-[9px] text-outline">11</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="12:00 - 8 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 18%"></div>
+<span class="font-label-sm text-[9px] text-outline">12</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="13:00 - 42 events">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 85%"></div>
+<span class="font-label-sm text-[9px] text-outline">13</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="14:00 - 54 events (Peak)">
+<div class="w-full bg-primary-container rounded-t" style="height: 100%"></div>
+<span class="font-label-sm text-[9px] text-primary-container font-semibold">14</span>
+</div>
+<div class="w-full flex flex-col items-center gap-1 group" title="15:00 - 28 events (Current)">
+<div class="w-full bg-surface-container-highest group-hover:bg-secondary transition-colors rounded-t" style="height: 52%"></div>
+<span class="font-label-sm text-[9px] text-outline">15</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-outline font-label-sm text-[11px] pt-space-xs">
+<span>Peak: <strong>54 ev/hr</strong></span>
+<span>Rolling 8-hr window</span>
+</div>
+</div>
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg border border-outline-variant/20 gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<h3 class="font-code-inline text-label-md font-semibold text-primary">Compression Ratio</h3>
+<span class="font-label-sm text-label-sm text-outline">All Repos</span>
+</div>
+<div class="flex items-center gap-space-md p-space-sm bg-surface-container-lowest rounded-lg">
+<div class="relative w-14 h-14 shrink-0 flex items-center justify-center">
+<svg class="w-14 h-14 transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="84, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<span class="absolute font-code-inline text-[11px] font-bold text-primary">93%</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">84</span>
+<span class="font-body-sm text-body-sm text-outline">syntheses</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-snug">
+From <span class="text-on-surface font-medium">1,248 raw events</span>. Context saved.
+</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-lg border border-outline-variant/20 gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<h3 class="font-code-inline text-label-md font-semibold text-primary">Active Repositories</h3>
+<span class="font-label-sm text-[11px] text-outline font-code-inline">3 active</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<button class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors text-left group">
+<div class="flex flex-col min-w-0">
+<span class="font-code-inline text-[12px] text-on-surface truncate group-hover:text-primary transition-colors">alexchen/lifeos</span>
+<span class="font-label-sm text-[10px] text-outline">feat/hnsw-pgvector</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline font-medium">48 ev</span>
+</button>
+<button class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors text-left group">
+<div class="flex flex-col min-w-0">
+<span class="font-code-inline text-[12px] text-on-surface truncate group-hover:text-primary transition-colors">alexchen/saas-dashboard</span>
+<span class="font-label-sm text-[10px] text-outline">main</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline font-medium">62 ev</span>
+</button>
+<button class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors text-left group">
+<div class="flex items-col min-w-0">
+<span class="font-code-inline text-[12px] text-on-surface truncate group-hover:text-primary transition-colors">alexchen/supabase-starter</span>
+<span class="font-label-sm text-[10px] text-outline">main</span>
+</div>
+<span class="font-code-inline text-[11px] text-outline font-medium">18 ev</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col rounded-xl bg-surface-container-low p-space-md border border-outline-variant/20 gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline font-medium">Delivery Health</span>
+<span class="font-code-inline text-[11px] text-outline">100% ACK</span>
+</div>
+<p class="font-body-sm text-[11px] text-outline leading-normal mt-0.5">
+HMAC SHA-256 verified ingestion hook running.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

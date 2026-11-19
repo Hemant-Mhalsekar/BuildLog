@@ -1,0 +1,6 @@
+{
+  "name": "BuildLog",
+  "description": "Your development history, on autopilot. Automated GitHub activity ingestion, Gemini summarization, and deterministic Project Memory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

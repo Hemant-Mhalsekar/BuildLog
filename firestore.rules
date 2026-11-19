@@ -1,0 +1,316 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Reusable Security Primitives ---
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwnerId(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isBoundedStringList(val, maxItems) {
+      return val is list && val.size() <= maxItems && (val.size() == 0 || val[0] is string);
+    }
+
+    function ownsIntegration(integrationId) {
+      return isValidId(integrationId)
+        && exists(/databases/$(database)/documents/integrations/$(integrationId))
+        && get(/databases/$(database)/documents/integrations/$(integrationId)).data.ownerId == request.auth.uid;
+    }
+
+    function ownsRepository(repositoryId) {
+      return isValidId(repositoryId)
+        && exists(/databases/$(database)/documents/repositories/$(repositoryId))
+        && get(/databases/$(database)/documents/repositories/$(repositoryId)).data.ownerId == request.auth.uid;
+    }
+
+    // --- Validation Blueprints ---
+    function isValidUserProfile(data, uid) {
+      return data.keys().hasAll(['uid', 'displayName', 'email', 'createdAt'])
+        && data.keys().hasOnly(['uid', 'displayName', 'email', 'createdAt', 'updatedAt', 'optInCodeDiff', 'retentionDays'])
+        && isValidId(data.uid)
+        && data.uid == uid
+        && data.uid == request.auth.uid
+        && data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 80
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.createdAt is timestamp
+        && (!('updatedAt' in data) || data.updatedAt is timestamp)
+        && (!('optInCodeDiff' in data) || data.optInCodeDiff is bool)
+        && (!('retentionDays' in data) || (data.retentionDays is int && data.retentionDays >= 7 && data.retentionDays <= 3650));
+    }
+
+    function isValidIntegration(data) {
+      return data.keys().hasAll(['ownerId', 'provider', 'installationId', 'accountName', 'status', 'connectedAt'])
+        && data.keys().hasOnly(['ownerId', 'provider', 'installationId', 'accountName', 'status', 'connectedAt', 'updatedAt', 'lastWebhookAt'])
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && data.provider == 'github'
+        && data.installationId is string && data.installationId.size() >= 1 && data.installationId.size() <= 64
+        && data.accountName is string && data.accountName.size() >= 1 && data.accountName.size() <= 120
+        && data.status in ['connected', 'pending', 'disconnected', 'error']
+        && data.connectedAt is timestamp
+        && (!('updatedAt' in data) || data.updatedAt is timestamp)
+        && (!('lastWebhookAt' in data) || data.lastWebhookAt == null || data.lastWebhookAt is timestamp);
+    }
+
+    function isValidRepository(data) {
+      return data.keys().hasAll([
+          'ownerId', 'integrationId', 'githubRepositoryId', 'fullName',
+          'description', 'defaultBranch', 'primaryLanguage', 'status'
+        ])
+        && data.keys().hasOnly([
+          'ownerId', 'integrationId', 'githubRepositoryId', 'fullName',
+          'description', 'defaultBranch', 'primaryLanguage', 'lastSyncedAt',
+          'status', 'objective', 'htmlUrl', 'createdAt', 'updatedAt'
+        ])
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && isValidId(data.integrationId)
+        && data.githubRepositoryId is string && data.githubRepositoryId.size() >= 1 && data.githubRepositoryId.size() <= 64
+        && data.fullName is string && data.fullName.size() >= 1 && data.fullName.size() <= 200
+        && data.description is string && data.description.size() <= 1000
+        && data.defaultBranch is string && data.defaultBranch.size() >= 1 && data.defaultBranch.size() <= 120
+        && data.primaryLanguage is string && data.primaryLanguage.size() <= 60
+        && data.status in ['active', 'paused', 'disconnected']
+        && (!('lastSyncedAt' in data) || data.lastSyncedAt == null || data.lastSyncedAt is timestamp)
+        && (!('objective' in data) || (data.objective is string && data.objective.size() <= 1000))
+        && (!('htmlUrl' in data) || (data.htmlUrl is string && data.htmlUrl.size() <= 500))
+        && (!('createdAt' in data) || data.createdAt is timestamp)
+        && (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    function isValidActivityEvent(data) {
+      return data.keys().hasAll([
+          'ownerId', 'repositoryId', 'eventId', 'eventType', 'branch',
+          'commitSha', 'title', 'description', 'sourceUrl', 'changedFiles',
+          'occurredAt', 'processingStatus'
+        ])
+        && data.keys().hasOnly([
+          'ownerId', 'repositoryId', 'eventId', 'eventType', 'branch',
+          'commitSha', 'title', 'description', 'sourceUrl', 'changedFiles',
+          'occurredAt', 'processingStatus', 'author', 'prNumber', 'prState',
+          'issueNumber', 'issueState', 'errorMessage', 'createdAt'
+        ])
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && isValidId(data.repositoryId)
+        && data.eventId is string && data.eventId.size() >= 1 && data.eventId.size() <= 160
+        && data.eventType in ['push', 'pull_request', 'issues']
+        && data.branch is string && data.branch.size() <= 200
+        && data.commitSha is string && data.commitSha.size() <= 80
+        && data.title is string && data.title.size() >= 1 && data.title.size() <= 300
+        && data.description is string && data.description.size() <= 5000
+        && data.sourceUrl is string && data.sourceUrl.size() <= 500
+        && isBoundedStringList(data.changedFiles, 100)
+        && data.occurredAt is timestamp
+        && data.processingStatus in ['pending', 'summarized', 'recorded_without_summary', 'failed']
+        && (!('author' in data) || (data.author is string && data.author.size() <= 120))
+        && (!('prNumber' in data) || data.prNumber == null || data.prNumber is int)
+        && (!('prState' in data) || (data.prState is string && data.prState.size() <= 40))
+        && (!('issueNumber' in data) || data.issueNumber == null || data.issueNumber is int)
+        && (!('issueState' in data) || (data.issueState is string && data.issueState.size() <= 40))
+        && (!('errorMessage' in data) || (data.errorMessage is string && data.errorMessage.size() <= 500))
+        && (!('createdAt' in data) || data.createdAt is timestamp);
+    }
+
+    function isValidActivitySummary(data) {
+      return data.keys().hasAll([
+          'ownerId', 'repositoryId', 'relatedEventIds', 'summary',
+          'evidence', 'suggestedNextSteps', 'generatedAt'
+        ])
+        && data.keys().hasOnly([
+          'ownerId', 'repositoryId', 'relatedEventIds', 'summary',
+          'evidence', 'inferences', 'suggestedNextSteps', 'generatedAt',
+          'areasInvolved', 'model', 'status'
+        ])
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && isValidId(data.repositoryId)
+        && isBoundedStringList(data.relatedEventIds, 50)
+        && data.summary is string && data.summary.size() >= 1 && data.summary.size() <= 3000
+        && isBoundedStringList(data.evidence, 40)
+        && (!('inferences' in data) || isBoundedStringList(data.inferences, 30))
+        && isBoundedStringList(data.suggestedNextSteps, 30)
+        && (!('areasInvolved' in data) || isBoundedStringList(data.areasInvolved, 30))
+        && (!('model' in data) || (data.model is string && data.model.size() <= 80))
+        && (!('status' in data) || data.status in ['ready', 'unavailable', 'failed'])
+        && data.generatedAt is timestamp;
+    }
+
+    function isValidProjectMemory(data) {
+      return data.keys().hasAll([
+          'ownerId', 'repositoryId', 'projectOverview', 'recentChanges',
+          'openIssues', 'openPullRequests', 'technicalDecisions',
+          'suggestedNextSteps', 'supportingEventIds', 'lastUpdatedAt'
+        ])
+        && data.keys().hasOnly([
+          'ownerId', 'repositoryId', 'projectOverview', 'recentChanges',
+          'openIssues', 'openPullRequests', 'technicalDecisions', 'knownBlockers',
+          'suggestedNextSteps', 'supportingEventIds', 'lastUpdatedAt',
+          'objective', 'modifiedCodeAreas', 'technologies'
+        ])
+        && isValidId(data.ownerId)
+        && data.ownerId == request.auth.uid
+        && isValidId(data.repositoryId)
+        && data.projectOverview is string && data.projectOverview.size() <= 3000
+        && isBoundedStringList(data.recentChanges, 50)
+        && isBoundedStringList(data.openIssues, 50)
+        && isBoundedStringList(data.openPullRequests, 50)
+        && isBoundedStringList(data.technicalDecisions, 50)
+        && (!('knownBlockers' in data) || isBoundedStringList(data.knownBlockers, 50))
+        && isBoundedStringList(data.suggestedNextSteps, 30)
+        && isBoundedStringList(data.supportingEventIds, 100)
+        && (!('objective' in data) || (data.objective is string && data.objective.size() <= 1000))
+        && (!('modifiedCodeAreas' in data) || isBoundedStringList(data.modifiedCodeAreas, 50))
+        && (!('technologies' in data) || isBoundedStringList(data.technologies, 30))
+        && data.lastUpdatedAt is timestamp;
+    }
+
+    // --- Collection Rules ---
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwnerId(userId);
+      allow list: if false;
+      allow create: if isValidId(userId)
+        && isOwnerId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().createdAt == request.time;
+      allow update: if isValidId(userId)
+        && isOwnerId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'displayName', 'email', 'updatedAt', 'optInCodeDiff', 'retentionDays'
+        ]);
+      allow delete: if isValidId(userId) && isOwnerId(userId);
+    }
+
+    match /integrations/{integrationId} {
+      allow get: if isValidId(integrationId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(integrationId)
+        && isSignedIn()
+        && isValidIntegration(incoming())
+        && incoming().connectedAt == request.time;
+      allow update: if isValidId(integrationId)
+        && isSignedIn()
+        && existing().ownerId == request.auth.uid
+        && isValidIntegration(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().provider == existing().provider
+        && incoming().connectedAt == existing().connectedAt
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'installationId', 'accountName', 'status', 'updatedAt', 'lastWebhookAt'
+        ]);
+      allow delete: if isValidId(integrationId) && isSignedIn() && existing().ownerId == request.auth.uid;
+    }
+
+    match /repositories/{repositoryId} {
+      allow get: if isValidId(repositoryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(repositoryId)
+        && isSignedIn()
+        && isValidRepository(incoming())
+        && ownsIntegration(incoming().integrationId);
+      allow update: if isValidId(repositoryId)
+        && isSignedIn()
+        && existing().ownerId == request.auth.uid
+        && isValidRepository(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().integrationId == existing().integrationId
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly(['objective', 'updatedAt']) ||
+          incoming().diff(existing()).affectedKeys().hasOnly([
+            'description', 'defaultBranch', 'primaryLanguage', 'lastSyncedAt', 'status', 'objective', 'htmlUrl', 'updatedAt'
+          ])
+        );
+      allow delete: if isValidId(repositoryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+    }
+
+    match /activity_events/{eventDocId} {
+      allow get: if isValidId(eventDocId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(eventDocId)
+        && isSignedIn()
+        && isValidActivityEvent(incoming())
+        && ownsRepository(incoming().repositoryId);
+      allow update: if isValidId(eventDocId)
+        && isSignedIn()
+        && existing().ownerId == request.auth.uid
+        && isValidActivityEvent(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().repositoryId == existing().repositoryId
+        && incoming().eventId == existing().eventId
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'processingStatus', 'errorMessage', 'title', 'description', 'changedFiles', 'prState', 'issueState'
+        ]);
+      allow delete: if isValidId(eventDocId) && isSignedIn() && existing().ownerId == request.auth.uid;
+    }
+
+    match /activity_summaries/{summaryId} {
+      allow get: if isValidId(summaryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(summaryId)
+        && isSignedIn()
+        && isValidActivitySummary(incoming())
+        && incoming().generatedAt == request.time
+        && ownsRepository(incoming().repositoryId);
+      allow update: if isValidId(summaryId)
+        && isSignedIn()
+        && existing().ownerId == request.auth.uid
+        && isValidActivitySummary(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().repositoryId == existing().repositoryId
+        && incoming().generatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'relatedEventIds', 'summary', 'evidence', 'inferences', 'suggestedNextSteps',
+          'areasInvolved', 'model', 'status', 'generatedAt'
+        ]);
+      allow delete: if isValidId(summaryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+    }
+
+    match /project_memory/{memoryId} {
+      allow get: if isValidId(memoryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
+      allow create: if isValidId(memoryId)
+        && isSignedIn()
+        && isValidProjectMemory(incoming())
+        && incoming().lastUpdatedAt == request.time
+        && ownsRepository(incoming().repositoryId);
+      allow update: if isValidId(memoryId)
+        && isSignedIn()
+        && existing().ownerId == request.auth.uid
+        && isValidProjectMemory(incoming())
+        && incoming().ownerId == existing().ownerId
+        && incoming().repositoryId == existing().repositoryId
+        && incoming().lastUpdatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly([
+          'projectOverview', 'recentChanges', 'openIssues', 'openPullRequests',
+          'technicalDecisions', 'knownBlockers', 'suggestedNextSteps', 'supportingEventIds',
+          'lastUpdatedAt', 'objective', 'modifiedCodeAreas', 'technologies'
+        ]);
+      allow delete: if isValidId(memoryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+    }
+  }
+}

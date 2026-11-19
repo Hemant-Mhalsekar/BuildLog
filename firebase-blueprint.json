@@ -1,0 +1,434 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated BuildLog user profile and privacy preferences.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "optInCodeDiff": {
+          "type": "boolean"
+        },
+        "retentionDays": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "displayName", "email", "createdAt"]
+    },
+    "Integration": {
+      "title": "Integration",
+      "description": "Authorized GitHub App installation linked to a BuildLog user.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "provider": {
+          "type": "string",
+          "enum": ["github"]
+        },
+        "installationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "accountName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "status": {
+          "type": "string",
+          "enum": ["connected", "pending", "disconnected", "error"]
+        },
+        "connectedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastWebhookAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["ownerId", "provider", "installationId", "accountName", "status", "connectedAt"]
+    },
+    "Repository": {
+      "title": "Repository",
+      "description": "Connected read-only GitHub repository tracked by BuildLog.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "integrationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "githubRepositoryId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "defaultBranch": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "primaryLanguage": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 60
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "htmlUrl": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "lastSyncedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "paused", "disconnected"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "integrationId",
+        "githubRepositoryId",
+        "fullName",
+        "description",
+        "defaultBranch",
+        "primaryLanguage",
+        "status"
+      ]
+    },
+    "ActivityEvent": {
+      "title": "ActivityEvent",
+      "description": "Normalized GitHub webhook or imported history event (push, pull_request, issues).",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "repositoryId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "eventType": {
+          "type": "string",
+          "enum": ["push", "pull_request", "issues"]
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200
+        },
+        "commitSha": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5000
+        },
+        "sourceUrl": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "changedFiles": {
+          "type": "array"
+        },
+        "author": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120
+        },
+        "prNumber": {
+          "type": "integer"
+        },
+        "prState": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40
+        },
+        "issueNumber": {
+          "type": "integer"
+        },
+        "issueState": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40
+        },
+        "errorMessage": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "occurredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "processingStatus": {
+          "type": "string",
+          "enum": ["pending", "summarized", "recorded_without_summary", "failed"]
+        }
+      },
+      "required": [
+        "ownerId",
+        "repositoryId",
+        "eventId",
+        "eventType",
+        "branch",
+        "commitSha",
+        "title",
+        "description",
+        "sourceUrl",
+        "changedFiles",
+        "occurredAt",
+        "processingStatus"
+      ]
+    },
+    "ActivitySummary": {
+      "title": "ActivitySummary",
+      "description": "Backend Gemini-generated summary linked to verified GitHub activity events.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "repositoryId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "relatedEventIds": {
+          "type": "array"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000
+        },
+        "evidence": {
+          "type": "array"
+        },
+        "inferences": {
+          "type": "array"
+        },
+        "suggestedNextSteps": {
+          "type": "array"
+        },
+        "areasInvolved": {
+          "type": "array"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ready", "unavailable", "failed"]
+        },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "repositoryId",
+        "relatedEventIds",
+        "summary",
+        "evidence",
+        "suggestedNextSteps",
+        "generatedAt"
+      ]
+    },
+    "ProjectMemory": {
+      "title": "ProjectMemory",
+      "description": "Persistent automated project memory derived from GitHub activity and summaries.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "repositoryId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "projectOverview": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 3000
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "technologies": {
+          "type": "array"
+        },
+        "modifiedCodeAreas": {
+          "type": "array"
+        },
+        "recentChanges": {
+          "type": "array"
+        },
+        "openIssues": {
+          "type": "array"
+        },
+        "openPullRequests": {
+          "type": "array"
+        },
+        "technicalDecisions": {
+          "type": "array"
+        },
+        "knownBlockers": {
+          "type": "array"
+        },
+        "suggestedNextSteps": {
+          "type": "array"
+        },
+        "supportingEventIds": {
+          "type": "array"
+        },
+        "lastUpdatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "ownerId",
+        "repositoryId",
+        "projectOverview",
+        "recentChanges",
+        "openIssues",
+        "openPullRequests",
+        "technicalDecisions",
+        "suggestedNextSteps",
+        "supportingEventIds",
+        "lastUpdatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Authenticated user profile and privacy settings."
+    },
+    "/integrations/{integrationId}": {
+      "schema": { "$ref": "#/entities/Integration" },
+      "description": "Connected GitHub App installations owned by the user."
+    },
+    "/repositories/{repositoryId}": {
+      "schema": { "$ref": "#/entities/Repository" },
+      "description": "Connected read-only GitHub repositories."
+    },
+    "/activity_events/{eventDocId}": {
+      "schema": { "$ref": "#/entities/ActivityEvent" },
+      "description": "Ingested GitHub push, pull_request, and issues events."
+    },
+    "/activity_summaries/{summaryId}": {
+      "schema": { "$ref": "#/entities/ActivitySummary" },
+      "description": "Server-generated Gemini activity summaries linked to source events."
+    },
+    "/project_memory/{memoryId}": {
+      "schema": { "$ref": "#/entities/ProjectMemory" },
+      "description": "Automatically maintained project memory per repository."
+    }
+  }
+}
