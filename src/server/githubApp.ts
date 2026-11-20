@@ -7,9 +7,48 @@ import type {
 
 const GITHUB_API_BASE = 'https://api.github.com';
 
+/**
+ * Normalises a PEM private key pasted into an environment variable. Hosting dashboards often
+ * mangle multi-line values, so this accepts: real newlines, literal "\n" escapes, CRLF line
+ * endings, surrounding quotes, line breaks collapsed into spaces, and a base64-encoded .pem file.
+ */
+export function normalizePrivateKeyPem(input: string): string {
+  let key = input.trim();
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1).trim();
+  }
+  key = key.replace(/\\r/g, '').replace(/\\n/g, '\n').replace(/\r\n?/g, '\n');
+
+  // Whole .pem file supplied as base64 (no BEGIN header).
+  if (key && !key.includes('-----BEGIN')) {
+    const decoded = Buffer.from(key.replace(/\s+/g, ''), 'base64').toString('utf8');
+    if (decoded.includes('-----BEGIN')) key = decoded.trim();
+  }
+
+  // Rebuild the PEM so whitespace inside the body (e.g. spaces instead of newlines) doesn't matter.
+  const match = key.match(/-----BEGIN ([A-Z0-9 ]+)-----([\s\S]*?)-----END \1-----/);
+  if (!match) return key;
+  const label = match[1];
+  const body = match[2].replace(/[^A-Za-z0-9+/=]/g, '');
+  const lines = body.match(/.{1,64}/g) ?? [];
+  return `-----BEGIN ${label}-----\n${lines.join('\n')}\n-----END ${label}-----\n`;
+}
+
 function readPrivateKey(): string {
-  const raw = process.env.GITHUB_APP_PRIVATE_KEY ?? '';
-  return raw.includes('\\n') ? raw.replace(/\\n/g, '\n') : raw;
+  return normalizePrivateKeyPem(process.env.GITHUB_APP_PRIVATE_KEY ?? '');
+}
+
+function loadSigningKey(pem: string): crypto.KeyObject {
+  try {
+    return crypto.createPrivateKey(pem);
+  } catch {
+    throw new Error(
+      'GITHUB_APP_PRIVATE_KEY in Netlify is not a valid private key. Open the .pem file downloaded from your GitHub App, copy everything including the -----BEGIN and -----END lines, paste it as the value (Live app), and redeploy.'
+    );
+  }
 }
 
 export function getGitHubAppConfigStatus(): GitHubAppConfigStatus {
@@ -144,7 +183,7 @@ export function createGitHubAppJwt(): string {
   const signature = crypto
     .createSign('RSA-SHA256')
     .update(signingInput)
-    .sign(privateKey);
+    .sign(loadSigningKey(privateKey));
 
   return `${signingInput}.${base64UrlEncode(signature)}`;
 }
