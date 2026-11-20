@@ -14,6 +14,7 @@ import {
   synthesizeProjectMemoryFromHistory,
 } from './projectMemoryBuilder';
 import { validateInstallationId, validateObjective } from './validation';
+import { parseApiResponseBody } from './apiResponse';
 import { parseGitHubRepositoryUrl } from './githubUrl';
 import { computeWebhookHealthStatus } from './webhookHealth';
 import type {
@@ -581,4 +582,51 @@ test('parseGitHubRepositoryUrl parses valid GitHub URLs and rejects invalid targ
   assert.equal(parseGitHubRepositoryUrl('https://gitlab.com/acme/repo').valid, false);
   assert.equal(parseGitHubRepositoryUrl('https://github.com/only-owner').valid, false);
   assert.equal(parseGitHubRepositoryUrl('not a url').valid, false);
+});
+
+test('parseApiResponseBody surfaces HTML/empty 200 responses and API errors clearly', () => {
+  const okData = parseApiResponseBody<{ status: string }>(
+    '/api/github/repositories/prepare-connect',
+    200,
+    true,
+    'application/json',
+    JSON.stringify({ status: 'authorization_required' })
+  );
+  assert.equal(okData.status, 'authorization_required');
+
+  assert.throws(
+    () =>
+      parseApiResponseBody(
+        '/api/github/repositories/prepare-connect',
+        503,
+        false,
+        'application/json',
+        JSON.stringify({ error: 'GitHub repository connection is not configured.' })
+      ),
+    /GitHub repository connection is not configured/
+  );
+
+  assert.throws(
+    () =>
+      parseApiResponseBody(
+        '/api/github/repositories/prepare-connect',
+        200,
+        true,
+        'text/html; charset=utf-8',
+        '<!doctype html><html><body>SPA Fallback</body></html>'
+      ),
+    /Server returned HTML instead of JSON/
+  );
+
+  assert.throws(
+    () =>
+      parseApiResponseBody(
+        '/api/github/repositories/prepare-connect',
+        200,
+        true,
+        'application/json',
+        ''
+      ),
+    /invalid or empty response/
+  );
 });

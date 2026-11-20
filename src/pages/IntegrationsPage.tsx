@@ -130,6 +130,11 @@ export function IntegrationsPage() {
       if (!user) {
         throw new Error('You must be signed in to connect a repository.');
       }
+      if (!authorized?.repository?.fullName) {
+        throw new Error(
+          'GitHub repository details were missing from the server authorization response.'
+        );
+      }
 
       setFlow({
         phase: 'importing',
@@ -312,6 +317,12 @@ export function IntegrationsPage() {
           return;
         }
 
+        if (result.status !== 'authorized' || !result.repository?.fullName) {
+          throw new Error(
+            'Unexpected response from the BuildLog server while verifying GitHub authorization.'
+          );
+        }
+
         await finalizeRepositoryConnection({
           installationId: result.installationId,
           accountName: result.accountName,
@@ -355,6 +366,12 @@ export function IntegrationsPage() {
           authorizeReason: `Select your GitHub account or organization and grant read-only access to ${response.fullName}.`,
         });
         return;
+      }
+
+      if (response.status !== 'authorized' || !response.repository?.fullName) {
+        throw new Error(
+          'Unexpected response from the BuildLog server while checking repository access. Ensure the backend server is up to date.'
+        );
       }
 
       await finalizeRepositoryConnection({

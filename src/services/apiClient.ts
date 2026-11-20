@@ -1,4 +1,5 @@
 import { auth } from '../lib/firebase';
+import { parseApiResponseBody } from '../utils/apiResponse';
 import type {
   CompleteGitHubAuthResponse,
   GitHubAppConfigStatus,
@@ -30,11 +31,9 @@ async function apiJson<T>(url: string, init: RequestInit = {}): Promise<T> {
     },
   });
 
-  const data = (await res.json().catch(() => ({}))) as T & { error?: string };
-  if (!res.ok) {
-    throw new Error(data.error || `Request failed with status ${res.status}`);
-  }
-  return data;
+  const rawText = await res.text();
+  const contentType = res.headers.get('content-type') ?? '';
+  return parseApiResponseBody<T>(url, res.status, res.ok, contentType, rawText);
 }
 
 export async function fetchGitHubAppStatus(): Promise<GitHubAppConfigStatus> {
