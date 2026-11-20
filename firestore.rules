@@ -249,7 +249,9 @@ service cloud.firestore {
     }
 
     match /activity_events/{eventDocId} {
-      allow get: if isValidId(eventDocId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      // `resource == null` lets the client check whether a doc exists before creating it
+      // (getDoc on a missing doc). Without it, existing().ownerId errors and the read is denied.
+      allow get: if isValidId(eventDocId) && isSignedIn() && (resource == null || existing().ownerId == request.auth.uid);
       allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
       allow create: if isValidId(eventDocId)
         && isSignedIn()
@@ -291,7 +293,9 @@ service cloud.firestore {
     }
 
     match /project_memory/{memoryId} {
-      allow get: if isValidId(memoryId) && isSignedIn() && existing().ownerId == request.auth.uid;
+      // `resource == null` lets the client check whether a doc exists before creating it
+      // (getDoc on a missing doc). Without it, existing().ownerId errors and the read is denied.
+      allow get: if isValidId(memoryId) && isSignedIn() && (resource == null || existing().ownerId == request.auth.uid);
       allow list: if isSignedIn() && existing().ownerId == request.auth.uid;
       allow create: if isValidId(memoryId)
         && isSignedIn()
