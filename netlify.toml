@@ -9,6 +9,12 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # These env vars hold public identifiers / plain words that legitimately appear in the
+  # repo and the client bundle (e.g. the Firebase project ID is in firebase-applet-config.json),
+  # so Netlify's secrets scanner would flag them as false positives.
+  # Real secrets (GEMINI_API_KEY, GITHUB_APP_CLIENT_SECRET, GITHUB_APP_PRIVATE_KEY,
+  # GITHUB_WEBHOOK_SECRET) are intentionally NOT listed and stay protected by the scan.
+  SECRETS_SCAN_OMIT_KEYS = "FIREBASE_PROJECT_ID,BUILDLOG_CONTEXT,APP_URL,GITHUB_APP_ID,GITHUB_APP_SLUG,GITHUB_APP_CLIENT_ID"
 
 [functions]
   node_bundler = "esbuild"
