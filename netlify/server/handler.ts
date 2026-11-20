@@ -1,9 +1,14 @@
 import serverless from 'serverless-http';
-import type { Config, Context } from '@netlify/functions';
+import type { Context } from '@netlify/functions';
 import { createApp } from '../../src/server/app';
 
 /**
  * Runs the existing Express server (src/server/app.ts) as a Netlify Function (v2 format).
+ *
+ * This file is NOT deployed directly. `npm run build:functions` bundles it (with all
+ * dependencies) into netlify/.build/server.mjs, which netlify/functions/api.mjs re-exports.
+ * Bundling avoids loading dependencies from node_modules at runtime, where some ESM-only
+ * packages (e.g. `jose`, required by firebase-admin -> jwks-rsa) crash on Node 18.
  *
  * The v2 format is required because Netlify only injects the full Netlify Blobs context
  * (including `uncachedEdgeURL`, needed for strong-consistency reads) into v2 functions.
@@ -64,8 +69,4 @@ export default async (request: Request, context: Context): Promise<Response> => 
     : null;
   const noBody = result.statusCode === 204 || result.statusCode === 304;
   return new Response(noBody ? null : body, { status: result.statusCode, headers });
-};
-
-export const config: Config = {
-  path: '/api/*',
 };

@@ -3,7 +3,7 @@
 # - Backend: Express app (src/server/app.ts) runs as a single Netlify Function
 
 [build]
-  command = "npm run build"
+  command = "npm run build && npm run build:functions"
   publish = "dist"
   functions = "netlify/functions"
 

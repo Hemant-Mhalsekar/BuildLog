@@ -9,3 +9,4 @@ coverage/
 .data/
 .playwright-cli/
 .netlify/
+netlify/.build/
